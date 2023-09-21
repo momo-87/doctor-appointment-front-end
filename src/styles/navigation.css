@@ -1,0 +1,12 @@
+.active {
+  background-color: #97BF0F;
+  color: white;
+  height: 40px;
+  padding-left: 1.25rem;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  font: bold;
+  padding-right: 1.25rem;
+
+}
