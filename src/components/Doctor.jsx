@@ -1,13 +1,13 @@
 import { NavLink } from 'react-router-dom';
 
 const Doctor = () => (
-  <div className="md:flex">
+  <div className="md:flex md:justify-between md:pr-5 md:ml-5">
 
-    <div className="mt-[100px]">
+    <div className="mt-[100px] md:w-[40%] md:ml-[20%]">
       <img src="https://i.ibb.co/TrK90p2/doctor.png" alt="doctor" />
     </div>
 
-    <div className="mt-[20px] flex flex-col gap-5 px-2">
+    <div className="mt-[20px] flex flex-col gap-5 px-2 md:w-[25%] md:mt-[100px]">
       <div className="flex flex-col items-center gap-1 px-2">
         <p className="font-bold text-xl">
           Dr.
