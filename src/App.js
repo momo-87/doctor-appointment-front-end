@@ -13,8 +13,7 @@ const App = () => (
         <Route path="details" element={<DetailsPage />} />
         <Route path="*" element={<NotMatch />} />
       </Route>
-      <Route path="/auth" element={<AuthPage />}>
-      </Route>
+      <Route path="/auth" element={<AuthPage />} />
     </Routes>
   </div>
 );

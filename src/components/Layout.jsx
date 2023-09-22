@@ -1,8 +1,8 @@
-import { Outlet, useNavigate } from "react-router-dom";
-import NavigationPanel from "./NavigationPanel";
-import { useEffect } from "react";
-import { getUser } from "../redux/auth/authSlice";
-import { useSelector } from "react-redux";
+import { Outlet, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import NavigationPanel from './NavigationPanel';
+import { getUser } from '../redux/auth/authSlice';
 
 const Layout = () => {
   const navigate = useNavigate();
@@ -10,8 +10,9 @@ const Layout = () => {
 
   useEffect(() => {
     if (!existingUser) {
-      return navigate("/auth");
+      return navigate('/auth');
     }
+    return () => {};
   }, [existingUser]);
 
   return (

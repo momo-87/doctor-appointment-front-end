@@ -1,7 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { authenticate, getUser, authStatus, authError } from "../redux/auth/authSlice";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import {
+  authenticate,
+  getUser,
+  authStatus,
+  // authError,
+} from '../redux/auth/authSlice';
 
 const AuthPage = () => {
   const dispatch = useDispatch();
@@ -9,23 +14,22 @@ const AuthPage = () => {
 
   const existingUser = useSelector(getUser);
   const auth = useSelector(authStatus);
-  const error = useSelector(authError);
+  // const error = useSelector(authError);
 
-  const [user_name, setUser_name] = useState("");
+  const [userName, setUserName] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(authenticate({ user_name }));
-    return navigate("/");
+    dispatch(authenticate({ user_name: userName }));
+    return navigate('/');
   };
 
   useEffect(() => {
-    if (existingUser || auth === "succeeded") {
-      console.log("SDASD", existingUser);
-      return navigate("/");
-    } else {
-      console.log("NOTF", existingUser, auth, error);
+    if (existingUser || auth === 'succeeded') {
+      return navigate('/');
     }
+
+    return () => {};
   }, [existingUser, auth]);
 
   return (
@@ -35,13 +39,13 @@ const AuthPage = () => {
           <input
             type="text"
             className="p-2 font-semibold rounded-full"
-            value={user_name}
+            value={userName}
             required
-            onChange={(e) => setUser_name(e.target.value)}
+            onChange={(e) => setUserName(e.target.value)}
             placeholder="Enter username"
           />
           <button type="submit" className="btn btn-primary p-4">
-            <i className="fa-regular fa-circle-right fa-lg text-white"></i>
+            <i className="fa-regular fa-circle-right fa-lg text-white" />
           </button>
         </div>
       </form>
