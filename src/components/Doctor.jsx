@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 const Doctor = () => (
   <div className="md:flex md:justify-between md:pr-5 md:ml-5">
 
-    <div className="mt-[100px] md:w-[40%] md:ml-[20%]">
+    <div className="md:mt-[100px] md:w-[40%] md:ml-[20%] mt-[80px]">
       <img src="https://i.ibb.co/TrK90p2/doctor.png" alt="doctor" />
     </div>
 
