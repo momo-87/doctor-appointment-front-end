@@ -1,6 +1,8 @@
+import Doctor from '../components/Doctor';
+
 const DetailsPage = () => (
   <div>
-    Details Page content
+    <Doctor />
   </div>
 );
 

@@ -10,7 +10,7 @@ const links = [
 ];
 
 const NavigationPanel = () => (
-  <div className="border-r h-screen w-auto pt-[100px]">
+  <div className="border-r h-screen w-auto pt-[100px] hidden md:block">
     <aside>
       <ul className="space-y-2 font-medium items-start flex flex-col ml-3 gap-2">
         {links.map((link) => (
