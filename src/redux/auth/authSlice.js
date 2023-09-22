@@ -16,8 +16,7 @@ export const authenticate = createAsyncThunk('AUTH', async (data) => {
     })
 
     if (response.status === 200) {
-        const json = response.json();
-        return json;
+        return response.data;
     } else {
         return { message: 'Error' };
     }
@@ -26,9 +25,7 @@ export const authenticate = createAsyncThunk('AUTH', async (data) => {
 export const authSlice = createSlice({
     name: 'auth',
     initialState,
-    reducers: {
-        getUser: (state) => state.user,
-    },
+    reducers: {},
     extraReducers(builder) {
         builder
             .addCase(authenticate.pending, (state, _) => {
@@ -45,6 +42,8 @@ export const authSlice = createSlice({
     },
 })
 
-export const { getUser } = authSlice.actions;
+export const getUser = (state) => state.auth.user;
+export const authStatus = (state) => state.auth.status;
+export const authError = (state) => state.auth.error;
 
 export default authSlice.reducer;
