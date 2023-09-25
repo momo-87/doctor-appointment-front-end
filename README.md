@@ -2,7 +2,7 @@
 
 <div align="center">
 
-  <h3><b>Doctor Appointment Front-End</b></h3>
+  <h3><b>Doctor's Appointment Front-End</b></h3>
 
 </div>
 
@@ -24,11 +24,11 @@
 - [🙏 Acknowledgements](#acknowledgements)
 - [📝 License](#license)
 
-# 📖 [Doctor Appointment Front-End] <a name="about-project"></a>
+# 📖 [Doctor's Appointment Front-End] <a name="about-project"></a>
 
 > This web application allows a user to book an appointment with a doctor and it is a front-end built using React JS that uses an API web service built with ruby on rails.
 
-## Doctor Appointment Back-End Repository
+## Doctor's Appointment Back-End Repository
 
 | Repository | Pull request |
 |------------|------------|

@@ -3,8 +3,7 @@ import NotMatch from './routes/NotMatch';
 import MainPage from './routes/MainPage';
 import DetailsPage from './routes/DetailsPage';
 import Layout from './components/Layout';
-
-import './App.css';
+import AuthPage from './routes/AuthPage';
 
 const App = () => (
   <div className="App">
@@ -14,6 +13,7 @@ const App = () => (
         <Route path="details" element={<DetailsPage />} />
         <Route path="*" element={<NotMatch />} />
       </Route>
+      <Route path="/auth" element={<AuthPage />} />
     </Routes>
   </div>
 );
