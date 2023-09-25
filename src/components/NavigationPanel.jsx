@@ -10,11 +10,11 @@ const links = [
 ];
 
 const NavigationPanel = () => (
-  <div className="border-r h-screen w-auto pt-[100px]">
-    <aside>
+  <div className="border-r h-screen pt-[100px]">
+    <aside className="hidden md:block">
       <ul className="space-y-2 font-medium items-start flex flex-col ml-3 gap-2">
         {links.map((link) => (
-          <li key={link.text} className={`pl-5 active:bg-color-green active:text-white hover:bg-color-green hover:text-white h-[40px] flex items-center w-full pr-5 font-bold ${({ isActive }) => (isActive ? 'active' : '')}`}>
+          <li key={link.text} className={`pl-5 whitespace-nowrap active:bg-color-green active:text-white hover:bg-color-green hover:text-white h-[40px] flex items-center w-full pr-5 font-bold ${({ isActive }) => (isActive ? 'active' : '')}`}>
             <NavLink
               to={link.path}
             >

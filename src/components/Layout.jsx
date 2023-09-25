@@ -1,6 +1,7 @@
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import MobileMenu from './MobileMenu';
 import NavigationPanel from './NavigationPanel';
 import { getUser } from '../redux/auth/authSlice';
 
@@ -16,10 +17,13 @@ const Layout = () => {
   }, [existingUser]);
 
   return (
-    <div className="flex">
-      <NavigationPanel />
-      <Outlet />
-    </div>
+    <>
+      <MobileMenu />
+      <div className="flex">
+        <NavigationPanel />
+        <Outlet />
+      </div>
+    </>
   );
 };
 
