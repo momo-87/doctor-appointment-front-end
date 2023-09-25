@@ -11,6 +11,7 @@ const App = () => (
       <Route path="/" element={<Layout />}>
         <Route index element={<MainPage />} />
         <Route path="details" element={<DetailsPage />} />
+        <Route path="delete-doctor" element={<DeleteDoctorList />} />
         <Route path="*" element={<NotMatch />} />
       </Route>
       <Route path="/auth" element={<AuthPage />} />
