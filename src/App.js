@@ -1,9 +1,9 @@
-import { Route, Routes } from 'react-router-dom';
-import NotMatch from './routes/NotMatch';
-import MainPage from './routes/MainPage';
-import DetailsPage from './routes/DetailsPage';
-import Layout from './components/Layout';
-import AuthPage from './routes/AuthPage';
+import { Route, Routes } from "react-router-dom";
+import NotMatch from "./routes/NotMatch";
+import MainPage from "./routes/MainPage";
+import DetailsPage from "./routes/DetailsPage";
+import Layout from "./components/Layout";
+import AuthPage from "./routes/AuthPage";
 
 const App = () => (
   <div className="App">
