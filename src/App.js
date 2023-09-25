@@ -4,6 +4,7 @@ import MainPage from "./routes/MainPage";
 import DetailsPage from "./routes/DetailsPage";
 import Layout from "./components/Layout";
 import AuthPage from "./routes/AuthPage";
+import DeleteDoctorList from "./routes/DeleteDoctors";
 
 const App = () => (
   <div className="App">
