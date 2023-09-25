@@ -11,12 +11,12 @@ const DeleteDoctor = ({ doctor }) => {
         <img src={doctor.image} alt="hi" />
       </div>
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl text-white text-center text-black">
+        <h1 className="text-2xl text-black text-center text-black">
           {doctor.name}
         </h1>
         <div className="text-center">
           <button
-            className="width-[100px] bg-color-green mt-[0px] px-[30px] py-[15x] rounded-2xl "
+            className="border-[2px] border-color-gray width-[100px] bg-color-green mt-[0px] px-[30px] py-[15x] rounded-2xl "
             type="button"
             onClick={handleDelete}
           >
