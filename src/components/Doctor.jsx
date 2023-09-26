@@ -8,7 +8,8 @@ const Doctor = ({ doctor, isLoading, error }) => (
     {(!isLoading && !error) && (
       <>
         <div className="md:mt-[100px] md:w-[40%] md:ml-[20%] mt-[80px]">
-          <img src="https://i.ibb.co/TrK90p2/doctor.png" alt="doctor" />
+          <img src={`data:image/png;base64,${doctor.image}`} alt="Doctor" />
+          {/* <img src="https://i.ibb.co/TrK90p2/doctor.png" alt="doctor" /> */}
         </div>
 
         <div className="mt-[20px] flex flex-col gap-5 px-2 md:w-[25%] md:mt-[100px] items-center">
@@ -61,6 +62,7 @@ Doctor.propTypes = {
     hospital: PropTypes.string,
     bio: PropTypes.string,
     rate: PropTypes.number,
+    image: PropTypes.string,
   }).isRequired,
   error: PropTypes.string.isRequired,
   isLoading: PropTypes.bool.isRequired,

@@ -10,10 +10,10 @@ const initialState = {
 
 export const getDoctor = createAsyncThunk('doctor/getdoctor', async (_, { rejectWithValue }) => {
   try {
-    const response = await axios.get(`${BASE_URL}/doctors/26`);
+    const response = await axios.get(`${BASE_URL}/doctors/25`);
     return response;
   } catch (error) {
-    return rejectWithValue('Yeeeeeeeeee!');
+    return rejectWithValue('Doctor not found');
   }
 });
 
