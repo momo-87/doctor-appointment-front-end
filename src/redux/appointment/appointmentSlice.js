@@ -4,7 +4,8 @@ import { BASE_URL } from '../constants';
 
 const initialState = {
     appointments: [],
-    status: 'not started',
+    fetchStatus: 'not started',
+    createStatus: 'not started',
     error: null,
 };
 
@@ -22,7 +23,6 @@ export const createAppointment = createAsyncThunk('CREATE APPOINTMENT', async (d
 });
 
 export const fetchAllAppointments = createAsyncThunk('FETCH APPOINTMENTS', async (_, { getState }) => {
-        
     const response = await axios.post(`${BASE_URL}/appointments/find_all`, JSON.stringify({
         user_id: getState().auth.user.id
     }), {
@@ -46,25 +46,25 @@ export const appointmentSlice = createSlice({
     extraReducers(builder) {
         builder
             .addCase(createAppointment.pending, (state) => {
-                state.status = 'loading';
+                state.createStatus = 'loading';
             })
             .addCase(createAppointment.fulfilled, (state, action) => {
-                state.status = 'succeeded';
+                state.createStatus = 'succeeded';
                 state.appointments.push(action.payload);
             })
             .addCase(createAppointment.rejected, (state, action) => {
-                state.status = 'failed';
+                state.createStatus = 'failed';
                 state.error = action.error.message;
             })
             .addCase(fetchAllAppointments.pending, (state) => {
-                state.status = 'loading';
+                state.fetchStatus = 'loading';
             })
             .addCase(fetchAllAppointments.fulfilled, (state, action) => {
-                state.status = 'succeeded';
+                state.fetchStatus = 'succeeded';
                 state.appointments = action.payload;
             })
             .addCase(fetchAllAppointments.rejected, (state, action) => {
-                state.status = 'failed';
+                state.fetchStatus = 'failed';
                 state.error = action.error.message;
             })
             ;
@@ -72,7 +72,9 @@ export const appointmentSlice = createSlice({
 });
 
 export const getAppointments = (state) => state.appointment.appointments;
-export const appointmentStatus = (state) => state.appointment.status;
+export const appointmentCreateStatus = (state) => state.appointment.createStatus;
+export const appointmentFetchStatus = (state) => state.appointment.fetchStatus;
+
 export const appointmentError = (state) => state.appointment.error;
 
 export default appointmentSlice.reducer;
