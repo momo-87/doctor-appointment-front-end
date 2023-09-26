@@ -3,8 +3,8 @@ import '../styles/navigation.css';
 
 const links = [
   { path: 'doctors', text: 'DOCTOR' },
-  { path: 'new-appointement', text: 'NEW APPOINTEMENT' },
-  { path: 'my-appointements', text: 'MY APPOINTEMENTS' },
+  { path: 'new-appointment', text: 'NEW APPOINTMENT' },
+  { path: 'my-appointments', text: 'MY APPOINTMENTS' },
   { path: 'add-doctor', text: 'ADD DOCTOR' },
   { path: 'delete-doctor', text: 'DELETE DOCTOR' },
 ];

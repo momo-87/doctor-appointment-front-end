@@ -29,6 +29,7 @@ export const authSlice = createSlice({
     builder
       .addCase(authenticate.pending, (state) => {
         state.status = 'loading';
+        state.error = null;
       })
       .addCase(authenticate.fulfilled, (state, action) => {
         state.status = 'succeeded';
