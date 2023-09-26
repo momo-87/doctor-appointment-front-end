@@ -37,6 +37,6 @@ export const mainPageSlice = createSlice({
   },
 });
 
-export const MainPageDoctors= (state) => state.doctors;
+export const mainPageDoctors = (state) => state.mainPage;
 
 export default mainPageSlice.reducer;
