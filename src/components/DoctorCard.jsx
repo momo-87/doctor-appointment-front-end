@@ -14,7 +14,7 @@ const DoctorCard = ({ doctor }) => {
         onClick={() => (handleClick(doctor))}
       >
         <div className="hover:border-4 hover:border-gray-500 px-3 md:w-full py-5 rounded-lg w-[95%] mx-auto">
-          <div className="w-[70%] rounded-full mx-auto bg-color-green">
+          <div className="w-[70%] rounded-full mx-auto bg-color-aliceblue">
             <img src={`data:image/png;base64,${doctor.image}`} alt="Doctor" />
           </div>
           <h2 className="text-lg font-extrabold flex justify-center mt-5">{doctor.name}</h2>
