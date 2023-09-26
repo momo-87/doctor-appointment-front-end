@@ -60,4 +60,3 @@ Doctor.propTypes = {
     image: PropTypes.string,
   }).isRequired,
 };
-
