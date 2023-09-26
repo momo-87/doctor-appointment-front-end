@@ -6,6 +6,7 @@ const initialState = {
   doctors: null,
   isLoading: true,
   error: undefined,
+  clickedDoctor: null,
 };
 
 export const getMainPageDoctors = createAsyncThunk('mainPage/getMainPageDoctors', async (_, { rejectWithValue }) => {
@@ -20,7 +21,11 @@ export const getMainPageDoctors = createAsyncThunk('mainPage/getMainPageDoctors'
 export const mainPageSlice = createSlice({
   name: 'mainPage',
   initialState,
-  reducers: {},
+  reducers: {
+    addClickedDoctor: (state, action) => {
+      state.clickedDoctor = action.payload;
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(getMainPageDoctors.pending, (state) => {
@@ -38,5 +43,6 @@ export const mainPageSlice = createSlice({
 });
 
 export const mainPageDoctors = (state) => state.mainPage;
+export const { addClickedDoctor } = mainPageSlice.actions;
 
 export default mainPageSlice.reducer;

@@ -1,20 +1,13 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { getDoctor, doctorData } from '../redux/doctor/doctorSlice';
+import { useSelector } from 'react-redux';
 import Doctor from '../components/Doctor';
+import { mainPageDoctors } from '../redux/mainPage/mainPageSlice';
 
 const DetailsPage = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getDoctor());
-  }, [dispatch]);
-  const { doctor, isLoading, error } = useSelector(doctorData);
+  const { clickedDoctor } = useSelector(mainPageDoctors);
   return (
     <div>
       <Doctor
-        doctor={doctor}
-        isLoading={isLoading}
-        error={error}
+        doctor={clickedDoctor}
       />
     </div>
   );

@@ -5,7 +5,7 @@ import { useState } from 'react';
 import logo from '../assets/images/logo.png';
 
 const links = [
-  { path: 'doctors', text: 'DOCTOR' },
+  { path: '/', text: 'DOCTOR' },
   { path: 'new-appointement', text: 'NEW APPOINTEMENT' },
   { path: 'my-appointements', text: 'MY APPOINTEMENTS' },
   { path: 'add-doctor', text: 'ADD DOCTOR' },
@@ -40,7 +40,7 @@ const MobileMenu = () => {
       <div className="w-[150px] ml-[57%] -mt-[45px]">
         <img src={logo} alt="logo" className="w-full h-auto" />
       </div>
-      <nav className>
+      <nav>
         <ul className="w-full font-medium hidden flex-col gap-2 h-screen bg-color-green items-center fixed top-[48px] bg-opacity-[90%]" style={toggleMobileMenu}>
           {links.map((link) => (
             <li key={link.text} className="pl-5 whitespace-nowrap text-color-aliceblue h-[40px] flex items-center w-full pr-5 font-bold">

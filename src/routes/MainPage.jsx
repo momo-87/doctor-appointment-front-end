@@ -11,13 +11,13 @@ const MainPage = () => {
   const { doctors, isLoading, error } = useSelector(mainPageDoctors);
 
   return (
-    <div className="pt-[100px]">
-      <div>
-        <h1 className="text-center">DOCTORS LIST</h1>
-        <p>Please select a doctor</p>
+    <div className="pt-[100px] flex flex-col items-center w-full">
+      <div className="md:mb-[100px] mb-10">
+        <h1 className="text-center md:text-2xl text-xl font-extrabold">DOCTORS LIST</h1>
+        <p className="font-bold text-lg text-gray-300">Please select a doctor</p>
       </div>
 
-      <div>
+      <div className="md:grid flex flex-col md:grid-cols-[31%,31%,31%] md:grid-rows-1 md:w-[70%] mx-auto md:gap-[10%] gap-[75px]">
         {isLoading && (<p>Is Loading</p>)}
         {error && (<p>{error}</p>)}
         {(!isLoading && !error) && (

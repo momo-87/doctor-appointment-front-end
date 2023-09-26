@@ -1,14 +1,29 @@
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addClickedDoctor } from '../redux/mainPage/mainPageSlice';
 
-const DoctorCard = ({ doctor }) => (
-  <div>
-    <div>
-      <img src={`data:image/png;base64,${doctor.image}`} alt="Doctor" />
-    </div>
-    <h2>{doctor.name}</h2>
-    <p>{doctor.bio}</p>
-  </div>
-);
+const DoctorCard = ({ doctor }) => {
+  const dispatch = useDispatch();
+  const handleClick = (doctor) => dispatch(addClickedDoctor(doctor));
+
+  return (
+    <>
+      <NavLink
+        to="details"
+        onClick={() => (handleClick(doctor))}
+      >
+        <div className="hover:border-4 hover:border-gray-500 px-3 md:w-full py-5 rounded-lg w-[95%] mx-auto">
+          <div className="w-[70%] rounded-full mx-auto bg-color-green">
+            <img src={`data:image/png;base64,${doctor.image}`} alt="Doctor" />
+          </div>
+          <h2 className="text-lg font-extrabold flex justify-center mt-5">{doctor.name}</h2>
+          <p className="text-gray-500 text-center">{doctor.bio}</p>
+        </div>
+      </NavLink>
+    </>
+  );
+};
 
 export default DoctorCard;
 
