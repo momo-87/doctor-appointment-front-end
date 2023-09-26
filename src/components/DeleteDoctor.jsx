@@ -1,10 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 const DeleteDoctor = ({ doctor }) => {
-  function handleDelete() {
+  const handleDelete = () => {
     console.log(doctor.id);
-  }
+  };
+
   return (
     <div>
       <div className="mb-[20px]">
