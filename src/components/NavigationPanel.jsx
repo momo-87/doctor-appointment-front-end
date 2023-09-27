@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import '../styles/navigation.css';
 
 const links = [
-  { path: 'doctors', text: 'DOCTOR' },
+  { path: '/', text: 'DOCTORS' },
   { path: 'new-appointement', text: 'NEW APPOINTEMENT' },
   { path: 'my-appointements', text: 'MY APPOINTEMENTS' },
   { path: 'add-doctor', text: 'ADD DOCTOR' },
