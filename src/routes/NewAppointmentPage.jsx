@@ -53,7 +53,7 @@ const NewAppointmentPage = () => {
                     className="rounded-full p-4 border-2 border-black"
                     onChange={(e) => {
                       const currentDoctor = doctors.find(
-                        ({ id }) => id == e.target.value,
+                        ({ id }) => parseInt(id, 10) === parseInt(e.target.value, 10),
                       );
                       setSelectedDoctor(currentDoctor);
                     }}

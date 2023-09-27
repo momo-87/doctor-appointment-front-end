@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchAllAppointments,
   getAppointments,
-  appointmentError,
+  // appointmentError,
   appointmentFetchStatus,
 } from '../redux/appointment/appointmentSlice';
 
@@ -12,7 +12,7 @@ const MyAppointmentsPage = () => {
 
   const appointments = useSelector(getAppointments);
   const status = useSelector(appointmentFetchStatus);
-  const error = useSelector(appointmentError);
+  // const error = useSelector(appointmentError);
 
   useEffect(() => {
     if (status === 'not started') {
