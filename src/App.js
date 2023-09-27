@@ -6,6 +6,7 @@ import Layout from './components/Layout';
 import AuthPage from './routes/AuthPage';
 import MyAppointmentsPage from './routes/MyAppointmentsPage';
 import DeleteDoctorList from './routes/DeleteDoctors';
+import NewAppointmentPage from './routes/NewAppointmentPage';
 
 const App = () => (
   <div className="App">
@@ -15,6 +16,7 @@ const App = () => (
         <Route path="details" element={<DetailsPage />} />
         <Route path="my-appointments" element={<MyAppointmentsPage />} />
         <Route path="delete-doctor" element={<DeleteDoctorList />} />
+        <Route path="new-appointment" element={<NewAppointmentPage />} />
         <Route path="*" element={<NotMatch />} />
       </Route>
       <Route path="/auth" element={<AuthPage />} />

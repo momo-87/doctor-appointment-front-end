@@ -4,8 +4,10 @@ import { BASE_URL } from '../constants';
 
 const initialState = {
     appointments: [],
+    doctors: [],
     fetchStatus: 'not started',
     createStatus: 'not started',
+    doctorFetchStatus: 'not started',
     error: null,
 };
 
@@ -16,10 +18,7 @@ export const createAppointment = createAsyncThunk('CREATE APPOINTMENT', async (d
         },
     });
 
-    if (response.status === 200) {
-        return response.data;
-    }
-    return { message: 'Error' };
+    return response.data;
 });
 
 export const fetchAllAppointments = createAsyncThunk('FETCH APPOINTMENTS', async (_, { getState }) => {
@@ -31,11 +30,14 @@ export const fetchAllAppointments = createAsyncThunk('FETCH APPOINTMENTS', async
         },
     });
 
-    if (response.status === 200) {
-        return response.data;
-    }
-    return { message: 'Error' };
+    return response.data;
 });
+
+export const fetchAllDoctors = createAsyncThunk('GET DOCTORS', async () => {
+    const response = await axios.get(`${BASE_URL}/doctors`);
+    return response.data;
+});
+
 
 export const appointmentSlice = createSlice({
     name: 'appointment',
@@ -50,7 +52,7 @@ export const appointmentSlice = createSlice({
             })
             .addCase(createAppointment.fulfilled, (state, action) => {
                 state.createStatus = 'succeeded';
-                state.appointments.push(action.payload);
+                state.appointments = [...state.appointments, action.payload];
             })
             .addCase(createAppointment.rejected, (state, action) => {
                 state.createStatus = 'failed';
@@ -66,15 +68,16 @@ export const appointmentSlice = createSlice({
             .addCase(fetchAllAppointments.rejected, (state, action) => {
                 state.fetchStatus = 'failed';
                 state.error = action.error.message;
-            })
-            ;
+            });
     },
 });
 
 export const getAppointments = (state) => state.appointment.appointments;
 export const appointmentCreateStatus = (state) => state.appointment.createStatus;
 export const appointmentFetchStatus = (state) => state.appointment.fetchStatus;
-
 export const appointmentError = (state) => state.appointment.error;
+
+export const doctorFetchStatus = (state) => state.appointment.doctorFetchStatus;
+export const getDoctors = (state) => state.appointment.doctors;
 
 export default appointmentSlice.reducer;

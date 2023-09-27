@@ -3,19 +3,20 @@ import axios from 'axios';
 import { BASE_URL } from '../constants';
 
 const initialState = {
-  doctor: null,
-  isLoading: true,
-  error: undefined,
+  doctors: [],
+  error: null,
+  status: 'not started'
 };
 
-export const getDoctor = createAsyncThunk('doctor/getdoctor', async (_, { rejectWithValue }) => {
+export const fetchAllDoctors = createAsyncThunk('GET DOCTORS', async (_, { rejectWithValue }) => {
   try {
-    const response = await axios.get(`${BASE_URL}/doctors/25`);
-    return response;
+    const response = await axios.get(`${BASE_URL}/doctors`);
+    return response.data;
   } catch (error) {
-    return rejectWithValue('Doctor not found');
+    return rejectWithValue('Doctors not found');
   }
 });
+
 
 export const doctorSlice = createSlice({
   name: 'doctor',
@@ -23,20 +24,22 @@ export const doctorSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder
-      .addCase(getDoctor.pending, (state) => {
-        state.isLoading = true;
+      .addCase(fetchAllDoctors.pending, (state) => {
+        state.status = 'loading';
       })
-      .addCase(getDoctor.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.doctor = action.payload.data;
+      .addCase(fetchAllDoctors.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.doctors = action.payload;
       })
-      .addCase(getDoctor.rejected, (state, action) => {
-        state.isLoading = false;
+      .addCase(fetchAllDoctors.rejected, (state, action) => {
+        state.status = 'failed';
         state.error = action.payload;
-      });
+      })
+      ;
   },
 });
 
-export const doctorData = (state) => state.doctor;
+export const doctorsFetchStatus = (state) => state.doctor.status;
+export const getDoctors = (state) => state.doctor.doctors;
 
 export default doctorSlice.reducer;
