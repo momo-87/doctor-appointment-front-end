@@ -18,8 +18,8 @@ const Layout = () => {
 
   return (
     <>
-      <MobileMenu />
       <div className="flex">
+        <MobileMenu />
         <NavigationPanel />
         <Outlet />
       </div>

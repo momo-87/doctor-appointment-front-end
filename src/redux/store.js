@@ -4,16 +4,20 @@ import appointmentReducer from './appointment/appointmentSlice';
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
 import thunk from 'redux-thunk';
+import doctorReducer from './doctor/doctorSlice';
+import mainPageReducer from './mainPage/mainPageSlice';
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['auth']
+  whitelist: ['auth', 'mainPage']
 }
 
 const rootReducer = combineReducers({
   auth: authReducer,
   appointment: appointmentReducer,
+  doctor: doctorReducer,
+  mainPage: mainPageReducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
