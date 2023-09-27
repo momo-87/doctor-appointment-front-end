@@ -5,7 +5,7 @@ import { BASE_URL } from '../constants';
 const initialState = {
   doctors: [],
   error: null,
-  status: 'not started'
+  status: 'not started',
 };
 
 export const fetchAllDoctors = createAsyncThunk('GET DOCTORS', async (_, { rejectWithValue }) => {
@@ -16,7 +16,6 @@ export const fetchAllDoctors = createAsyncThunk('GET DOCTORS', async (_, { rejec
     return rejectWithValue('Doctors not found');
   }
 });
-
 
 export const doctorSlice = createSlice({
   name: 'doctor',
@@ -34,8 +33,7 @@ export const doctorSlice = createSlice({
       .addCase(fetchAllDoctors.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.payload;
-      })
-      ;
+      });
   },
 });
 

@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { fetchAllDoctors } from "../redux/doctor/doctorSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { createAppointment } from "../redux/appointment/appointmentSlice";
-import { getUser } from "../redux/auth/authSlice";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { fetchAllDoctors } from '../redux/doctor/doctorSlice';
+import { createAppointment } from '../redux/appointment/appointmentSlice';
+import { getUser } from '../redux/auth/authSlice';
 
 const NewAppointmentPage = () => {
   const dispatch = useDispatch();
@@ -23,13 +23,13 @@ const NewAppointmentPage = () => {
         user_id: existingUser.id,
         doctor_id: selectedDoctor.id,
         appointment_date: selectedDate,
-      })
+      }),
     );
-    return navigate("/my-appointments");
+    return navigate('/my-appointments');
   };
 
   useEffect(() => {
-    if (fetchStatus === "not started") {
+    if (fetchStatus === 'not started') {
       dispatch(fetchAllDoctors());
     } else if (doctors.length > 0) {
       setSelectedDoctor(doctors[0]);
@@ -39,12 +39,12 @@ const NewAppointmentPage = () => {
   return (
     <>
       {
-        fetchStatus === "loading" ? (
+        fetchStatus === 'loading' ? (
           <div>Loading...</div>
         ) : (
-          fetchStatus === "succeeded" &&
-          doctors.length > 0 &&
-          selectedDoctor && (
+          fetchStatus === 'succeeded'
+          && doctors.length > 0
+          && selectedDoctor && (
             <div className="flex flex-col items-center justify-center mx-auto">
               <h1 className="text-4xl my-4">Book an appointment</h1>
               <div className="flex flex-row items-center">
@@ -53,7 +53,7 @@ const NewAppointmentPage = () => {
                     className="rounded-full p-4 border-2 border-black"
                     onChange={(e) => {
                       const currentDoctor = doctors.find(
-                        ({ id }) => id == e.target.value
+                        ({ id }) => id == e.target.value,
                       );
                       setSelectedDoctor(currentDoctor);
                     }}

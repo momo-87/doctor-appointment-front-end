@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchAllAppointments,
   getAppointments,
   appointmentError,
   appointmentFetchStatus,
-} from "../redux/appointment/appointmentSlice";
+} from '../redux/appointment/appointmentSlice';
 
 const MyAppointmentsPage = () => {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ const MyAppointmentsPage = () => {
   const error = useSelector(appointmentError);
 
   useEffect(() => {
-    if (status === "not started") {
+    if (status === 'not started') {
       dispatch(fetchAllAppointments());
     }
   }, [dispatch]);
@@ -56,7 +56,10 @@ const MyAppointmentsPage = () => {
                   </th>
                   <td className="px-6 py-4">{appointment.date}</td>
                   <td className="px-6 py-4">{appointment.hospital}</td>
-                  <td className="px-6 py-4">${appointment.rate}</td>
+                  <td className="px-6 py-4">
+                    $
+                    {appointment.rate}
+                  </td>
                 </tr>
               ))}
             </tbody>
