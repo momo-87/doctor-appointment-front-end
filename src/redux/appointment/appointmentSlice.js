@@ -33,11 +33,6 @@ export const fetchAllAppointments = createAsyncThunk('FETCH APPOINTMENTS', async
   return response.data;
 });
 
-export const fetchAllDoctors = createAsyncThunk('GET DOCTORS', async () => {
-  const response = await axios.get(`${BASE_URL}/doctors`);
-  return response.data;
-});
-
 export const appointmentSlice = createSlice({
   name: 'appointment',
   initialState,
