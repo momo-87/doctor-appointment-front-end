@@ -13,6 +13,11 @@ const AddDoctor = () => {
   const [image, setImage] = useState('');
   const [hospital, setHospital] = useState('');
 
+  const handleFileChange = (event) => {
+    const selectedFile = event.target.files[0];
+    setImage(selectedFile);
+  };
+  
   return (
     <div className="w-screen bg-color-green">
       <div className="flex flex-col ">
