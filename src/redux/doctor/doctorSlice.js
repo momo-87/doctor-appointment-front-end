@@ -30,7 +30,12 @@ export const removeDoctor = createAsyncThunk(
 export const doctorSlice = createSlice({
   name: "doctor",
   initialState,
-  reducers: {},
+  reducers: {
+    deleteDoctorById: (state, action) => {
+      const doctorId = action.payload;
+      state.doctors = state.doctors.filter((doctor) => doctor.id !== doctorId);
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(fetchAllDoctors.pending, (state) => {
