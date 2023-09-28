@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 const DeleteDoctor = ({ doctor }) => {
   const handleDelete = () => {
@@ -8,8 +8,8 @@ const DeleteDoctor = ({ doctor }) => {
 
   return (
     <div>
-      <div className="mb-[20px]">
-        <img src={doctor.image} alt="hi" />
+      <div className="w-[70%] rounded-full mx-auto bg-color-aliceblue">
+        <img src={`data:image/png;base64,${doctor.image}`} alt="Doctor" />
       </div>
       <div className="flex justify-between items-center">
         <h1 className="text-2xl text-black text-center text-black">
