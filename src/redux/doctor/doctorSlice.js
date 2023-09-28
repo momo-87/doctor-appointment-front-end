@@ -27,6 +27,8 @@ export const removeDoctor = createAsyncThunk(
   },
 );
 
+export const addNewDoctor = createAction('doctors/addNewDoctor');
+
 export const doctorSlice = createSlice({
   name: 'doctor',
   initialState,
