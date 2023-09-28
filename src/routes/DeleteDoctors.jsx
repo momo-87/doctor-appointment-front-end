@@ -1,7 +1,7 @@
-import React from "react";
-import DeleteDoctor from "../components/DeleteDoctor";
-import { useSelector } from "react-redux";
-import { getDoctors } from "../redux/doctor/doctorSlice";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import DeleteDoctor from '../components/DeleteDoctor';
+import { getDoctors } from '../redux/doctor/doctorSlice';
 
 function DeleteDoctorList() {
   const doctors = useSelector(getDoctors);

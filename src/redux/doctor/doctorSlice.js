@@ -1,34 +1,34 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
-import { BASE_URL } from "../constants";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
+import { BASE_URL } from '../constants';
 
 const initialState = {
   doctors: [],
   error: null,
-  status: "not started",
+  status: 'not started',
 };
 
 export const fetchAllDoctors = createAsyncThunk(
-  "GET DOCTORS",
+  'GET DOCTORS',
   async (_, { rejectWithValue }) => {
     try {
       const response = await axios.get(`${BASE_URL}/doctors`);
       return response.data;
     } catch (error) {
-      return rejectWithValue("Doctors not found");
+      return rejectWithValue('Doctors not found');
     }
-  }
+  },
 );
 
 export const removeDoctor = createAsyncThunk(
-  "REMOVE_DOCTOR",
+  'REMOVE_DOCTOR',
   async (doctorId) => {
     await axios.delete(`${BASE_URL}/doctors/${doctorId}`);
-  }
+  },
 );
 
 export const doctorSlice = createSlice({
-  name: "doctor",
+  name: 'doctor',
   initialState,
   reducers: {
     deleteDoctorById: (state, action) => {
@@ -39,14 +39,14 @@ export const doctorSlice = createSlice({
   extraReducers(builder) {
     builder
       .addCase(fetchAllDoctors.pending, (state) => {
-        state.status = "loading";
+        state.status = 'loading';
       })
       .addCase(fetchAllDoctors.fulfilled, (state, action) => {
-        state.status = "succeeded";
+        state.status = 'succeeded';
         state.doctors = action.payload;
       })
       .addCase(fetchAllDoctors.rejected, (state, action) => {
-        state.status = "failed";
+        state.status = 'failed';
         state.error = action.payload;
       });
   },

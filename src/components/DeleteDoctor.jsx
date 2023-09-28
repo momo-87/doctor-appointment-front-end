@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
-import { removeDoctor, deleteDoctorById } from "../redux/doctor/doctorSlice";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { removeDoctor, deleteDoctorById } from '../redux/doctor/doctorSlice';
 
 const DeleteDoctor = ({ doctor }) => {
   const dispatch = useDispatch();
