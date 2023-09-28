@@ -1,5 +1,7 @@
 import React from "react";
 import DeleteDoctor from "../components/DeleteDoctor";
+import { useSelector } from "react-redux";
+import { getDoctors } from "../redux/doctor/doctorSlice";
 
 function DeleteDoctorList() {
   return (
