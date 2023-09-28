@@ -35,12 +35,24 @@ const AddDoctor = () => {
             <div className="mb-4">
               <label htmlFor="images" className="mb-1 flex font-semibold dark:text-white">Photo</label>
               <input
-                type="text"
+                ref={fileInputRef}
+                className="relative m-0 block w-full min-w-0 flex-auto
+                          bg-clip-padding px-2 py-[0.3rem] transition duration-300 ease-in-out file:-mx-3 file:-my-[0.55rem]
+                          file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit
+                          file:px-2 file:py-[0.3rem] file:transition file:duration-150 file:ease-in-out
+                          file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem]
+                          hover:file:bg-neutral-400 focus:border-primary focus:shadow-te-primary focus:outline-none
+                          dark:border-neutral-600 dark:text-neutral-300 dark:file:bg-neutral-700 dark:file:text-neutral-100
+                          dark:focus:border-primary text-sm rounded-lg"
+                type="file"
                 id="image"
-                className="flex text-sm rounded-lg p-2.5"
-                placeholder="Photo"
-                value={image}
-                onChange={(e) => setSpecialization(e.target.value)}
+                style={{
+                  backgroundColor: 'white',
+                  fontSize: '14px',
+                }}
+                name="image"
+                onChange={handleFileChange}
+                accept="image/*"
                 required
               />
             </div>
