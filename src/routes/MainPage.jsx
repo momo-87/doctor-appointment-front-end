@@ -27,14 +27,40 @@ const MainPage = () => {
         </p>
       </div>
 
-      <div className="md:grid flex flex-col md:grid-cols-[31%,31%,31%] md:grid-rows-1 md:w-[70%] mx-auto md:gap-[10%] gap-[75px]">
-        {isLoading && <p>Is Loading</p>}
-        {error && <p>{error}</p>}
-        {!isLoading
-          && !error
-          && doctors.map((doctorItem) => (
-            <DoctorCard key={doctorItem.id} doctor={doctorItem} />
-          ))}
+      <div className="flex">
+        {!isLoading && (
+          <div className="mt-[100px] hidden md:block">
+            left
+          </div>
+        ) }
+
+        <div className="md:grid flex flex-col md:grid-cols-[31%,31%,31%] md:grid-rows-1 md:w-[70%] mx-auto md:gap-[10%] gap-[75px]">
+          {isLoading && (
+            <>
+              <div className="lds-roller">
+                <div />
+                <div />
+                <div />
+                <div />
+                <div />
+                <div />
+                <div />
+                <div />
+              </div>
+            </>
+          )}
+          {error && <p>{error}</p>}
+          {!isLoading
+            && !error
+            && doctors.map((doctorItem) => (
+              <DoctorCard key={doctorItem.id} doctor={doctorItem} />
+            ))}
+        </div>
+        {!isLoading && (
+          <div className="mt-[100px] hidden md:block">
+            right
+          </div>
+        ) }
       </div>
     </div>
   );
