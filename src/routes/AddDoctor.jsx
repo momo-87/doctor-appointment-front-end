@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { doctorsCreateThunk } from '../redux/doctor/doctorSlice';
+import { getUser } from '../redux/auth/authSlice';
 
 const AddDoctor = () => {
   const navigate = useNavigate();
@@ -13,6 +15,8 @@ const AddDoctor = () => {
   const [image, setImage] = useState('');
   const [hospital, setHospital] = useState('');
 
+  const user = useSelector(getUser);
+  
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
     setImage(selectedFile);
