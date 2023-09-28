@@ -3,8 +3,9 @@ import axios from 'axios';
 import { BASE_URL } from '../constants';
 
 const initialState = {
-  doctors: [],
+  doctors: null,
   error: null,
+  appointmentDoctor: null,
   status: 'not started',
 };
 
@@ -35,6 +36,9 @@ export const doctorSlice = createSlice({
       const doctorId = action.payload;
       state.doctors = state.doctors.filter((doctor) => doctor.id !== doctorId);
     },
+    setClickedDoctor: (state, action) => {
+      state.appointmentDoctor = state.doctors.find(({ id }) => id === action.payload);
+    },
   },
   extraReducers(builder) {
     builder
@@ -54,6 +58,7 @@ export const doctorSlice = createSlice({
 
 export const doctorsFetchStatus = (state) => state.doctor.status;
 export const getDoctors = (state) => state.doctor.doctors;
-export const { deleteDoctorById } = doctorSlice.actions;
+
+export const { deleteDoctorById, setClickedDoctor } = doctorSlice.actions;
 
 export default doctorSlice.reducer;

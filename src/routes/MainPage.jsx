@@ -4,17 +4,18 @@ import {
   getMainPageDoctors,
   mainPageDoctors,
 } from '../redux/mainPage/mainPageSlice';
-import { fetchAllDoctors } from '../redux/doctor/doctorSlice';
 import DoctorCard from '../components/DoctorCard';
 
 const MainPage = () => {
   const dispatch = useDispatch();
-  const { doctors, isLoading, error } = useSelector(mainPageDoctors);
+  const { doctors, isLoading, error, status } = useSelector(mainPageDoctors);
 
   useEffect(() => {
-    dispatch(getMainPageDoctors());
-    dispatch(fetchAllDoctors());
-  }, [dispatch]);
+    if (status === 'not started') {
+      dispatch(getMainPageDoctors());
+    } 
+
+  }, [dispatch, status]);
 
   return (
     <div className="pt-[100px] flex flex-col items-center w-full">

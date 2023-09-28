@@ -1,16 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { fetchAllDoctors } from '../redux/doctor/doctorSlice';
-import { createAppointment } from '../redux/appointment/appointmentSlice';
-import { getUser } from '../redux/auth/authSlice';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { fetchAllDoctors } from "../redux/doctor/doctorSlice";
+import { createAppointment } from "../redux/appointment/appointmentSlice";
+import { getUser } from "../redux/auth/authSlice";
+import { setToast } from "../redux/mainPage/mainPageSlice";
 
 const NewAppointmentPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const doctors = useSelector((state) => state.doctor.doctors);
-  const fetchStatus = useSelector((state) => state.doctor.status);
+  const {
+    doctors,
+    status: fetchStatus,
+    appointmentDoctor,
+  } = useSelector((state) => state.doctor);
+  const { createStatus, error } = useSelector((state) => state.appointment);
 
   const [selectedDoctor, setSelectedDoctor] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
@@ -23,28 +28,45 @@ const NewAppointmentPage = () => {
         user_id: existingUser.id,
         doctor_id: selectedDoctor.id,
         appointment_date: selectedDate,
-      }),
+      })
     );
-    return navigate('/my-appointments');
   };
 
   useEffect(() => {
-    if (fetchStatus === 'not started') {
+    if (fetchStatus === "not started") {
       dispatch(fetchAllDoctors());
-    } else if (doctors.length > 0) {
-      setSelectedDoctor(doctors[0]);
+    } else if (doctors !== null && doctors.length > 0) {
+      if (appointmentDoctor !== null) {
+        setSelectedDoctor(appointmentDoctor);
+      } else {
+        setSelectedDoctor(doctors[0]);
+      }
     }
   }, [doctors, fetchStatus]);
+
+  useEffect(() => {
+    if (
+      error !== null &&
+      (createStatus === "failed" || fetchStatus === "failed")
+    ) {
+      dispatch(setToast({ type: "error", message: error }));
+      
+    } else if (createStatus === "succeeded") {
+      return navigate("/my-appointments");
+    }
+
+  }, [createStatus, fetchStatus, error]);
 
   return (
     <>
       {
-        fetchStatus === 'loading' ? (
+        fetchStatus === "loading" ? (
           <div>Loading...</div>
         ) : (
-          fetchStatus === 'succeeded'
-          && doctors.length > 0
-          && selectedDoctor && (
+          fetchStatus === "succeeded" &&
+          doctors !== null &&
+          doctors.length > 0 &&
+          selectedDoctor && (
             <div className="flex flex-col items-center justify-center mx-auto">
               <h1 className="text-4xl my-4">Book an appointment</h1>
               <div className="flex flex-row items-center">
@@ -53,7 +75,8 @@ const NewAppointmentPage = () => {
                     className="rounded-full p-4 border-2 border-black"
                     onChange={(e) => {
                       const currentDoctor = doctors.find(
-                        ({ id }) => parseInt(id, 10) === parseInt(e.target.value, 10),
+                        ({ id }) =>
+                          parseInt(id, 10) === parseInt(e.target.value, 10)
                       );
                       setSelectedDoctor(currentDoctor);
                     }}

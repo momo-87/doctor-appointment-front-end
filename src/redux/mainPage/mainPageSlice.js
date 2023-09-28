@@ -7,6 +7,8 @@ const initialState = {
   isLoading: true,
   error: undefined,
   clickedDoctor: null,
+  toastMessage: null,
+  status: 'not started'
 };
 
 export const getMainPageDoctors = createAsyncThunk('mainPage/getMainPageDoctors', async (_, { rejectWithValue }) => {
@@ -25,25 +27,34 @@ export const mainPageSlice = createSlice({
     addClickedDoctor: (state, action) => {
       state.clickedDoctor = action.payload;
     },
+    setToast: (state, action) => {
+      state.toastMessage = action.payload;
+    }
   },
   extraReducers(builder) {
     builder
       .addCase(getMainPageDoctors.pending, (state) => {
         state.isLoading = true;
+        
       })
       .addCase(getMainPageDoctors.fulfilled, (state, action) => {
         state.isLoading = false;
         state.doctors = action.payload.data;
         state.error = undefined;
+        state.status = "succeeded";
       })
       .addCase(getMainPageDoctors.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
+        state.status = "failed";
       });
   },
 });
 
 export const mainPageDoctors = (state) => state.mainPage;
+export const toastMessage = (state) => state.toastMessage;
+
 export const { addClickedDoctor } = mainPageSlice.actions;
+export const { setToast } = mainPageSlice.actions;
 
 export default mainPageSlice.reducer;

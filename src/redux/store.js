@@ -10,14 +10,20 @@ import mainPageReducer from './mainPage/mainPageSlice';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['auth', 'mainPage'],
+  whitelist: ['auth'],
 };
+
+const mainPagePersistConfig = {
+  key: 'mainPage',
+  storage,
+  whitelist: ['clickedDoctor']
+}
 
 const rootReducer = combineReducers({
   auth: authReducer,
   appointment: appointmentReducer,
   doctor: doctorReducer,
-  mainPage: mainPageReducer,
+  mainPage: persistReducer(mainPagePersistConfig, mainPageReducer),
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
