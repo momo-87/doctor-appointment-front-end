@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { getDoctors } from "../redux/doctor/doctorSlice";
 
 function DeleteDoctorList() {
+  const doctors = useSelector(getDoctors);
   return (
     <div className=" pt-[20px] px-[10px] md-[20px]  md:px-[20px]">
       <h1 className="text-center mb-6 text-[20px] font-bold mt-[40px]">
