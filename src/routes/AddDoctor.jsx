@@ -37,6 +37,9 @@ const AddDoctor = () => {
     formData.append('doctor[rate]', rate);
     formData.append('doctor[hospital]', hospital);
 
+    const userId = user.id;
+    formData.append('doctor[user_id]', userId);
+    
     if (name !== '' && image !== '' && specialization !== '' && bio !== '' && rate !== '' && hospital !== '') {
       Promise.resolve(dispatch(doctorsCreateThunk(formData))).then(() => {
         setName('');
