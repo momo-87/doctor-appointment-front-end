@@ -54,5 +54,6 @@ export const doctorSlice = createSlice({
 
 export const doctorsFetchStatus = (state) => state.doctor.status;
 export const getDoctors = (state) => state.doctor.doctors;
+export const { deleteDoctorById } = doctorSlice.actions;
 
 export default doctorSlice.reducer;
