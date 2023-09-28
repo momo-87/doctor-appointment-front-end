@@ -67,6 +67,9 @@ export const doctorSlice = createSlice({
       .addCase(fetchAllDoctors.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.payload;
+      })
+      .addCase(addNewDoctor, (state, action) => {        
+        state.doctors.push(action.payload);
       });
   },
 });
