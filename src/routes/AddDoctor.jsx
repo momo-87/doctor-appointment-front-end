@@ -17,7 +17,30 @@ const AddDoctor = () => {
     const selectedFile = event.target.files[0];
     setImage(selectedFile);
   };
-  
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append('doctor[name]', name);
+    formData.append('doctor[image]', image);
+    formData.append('doctor[specialization]', specialization);
+    formData.append('doctor[bio]', bio);
+    formData.append('doctor[rate]', rate);
+    formData.append('doctor[hospital]', hospital);
+
+    if (name !== '' && image !== '' && specialization !== '' && bio !== '' && rate !== '' && hospital !== '') {
+      Promise.resolve(dispatch(doctorsCreateThunk(formData))).then(() => {
+        setName('');
+        setImage('');
+        setSpecialization('');
+        setBio('');
+        setRate('');
+        setHospital('');        
+      });
+    }
+  };
+
   return (
     <div className="w-screen bg-color-green">
       <div className="flex flex-col ">
