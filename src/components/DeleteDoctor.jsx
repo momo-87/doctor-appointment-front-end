@@ -6,7 +6,8 @@ import { removeDoctor, deleteDoctorById } from "../redux/doctor/doctorSlice";
 const DeleteDoctor = ({ doctor }) => {
   const dispatch = useDispatch();
   const handleDelete = () => {
-    console.log(doctor.id);
+    dispatch(removeDoctor(doctor.id));
+    dispatch(deleteDoctorById(doctor.id));
   };
 
   return (
