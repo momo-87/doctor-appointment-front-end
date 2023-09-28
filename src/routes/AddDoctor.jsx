@@ -7,6 +7,7 @@ import { getUser } from '../redux/auth/authSlice';
 const AddDoctor = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const fileInputRef = useRef(null);
 
   const [name, setName] = useState('');
   const [bio, setBio] = useState('');
@@ -39,7 +40,7 @@ const AddDoctor = () => {
 
     const userId = user.id;
     formData.append('doctor[user_id]', userId);
-    
+
     if (name !== '' && image !== '' && specialization !== '' && bio !== '' && rate !== '' && hospital !== '') {
       Promise.resolve(dispatch(doctorsCreateThunk(formData))).then(() => {
         setName('');
@@ -47,7 +48,11 @@ const AddDoctor = () => {
         setSpecialization('');
         setBio('');
         setRate('');
-        setHospital('');        
+        setHospital('');    
+        
+        if (fileInputRef.current) {
+          fileInputRef.current.value = '';
+        }
       });
     }
   };
