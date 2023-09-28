@@ -27,11 +27,11 @@ export const removeDoctor = createAsyncThunk(
   },
 );
 
-export const addNewDoctor = createAction('doctors/addNewDoctor');
+export const addNewDoctor = createAction('doctor/addNewDoctor');
 
 export const doctorsCreateThunk = createAsyncThunk(
-  'doctors/create',
-  async (doctor, { rejectWithValue, dispatch }) => { 
+  'doctor/create',
+  async (doctor, { rejectWithValue, dispatch }) => {
     const headers = {
       'Content-Type': 'multipart/form-data',
     };
@@ -68,7 +68,7 @@ export const doctorSlice = createSlice({
         state.status = 'failed';
         state.error = action.payload;
       })
-      .addCase(addNewDoctor, (state, action) => {        
+      .addCase(addNewDoctor, (state, action) => {
         state.doctors.push(action.payload);
       });
   },

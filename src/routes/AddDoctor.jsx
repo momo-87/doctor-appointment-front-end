@@ -17,7 +17,7 @@ const AddDoctor = () => {
   const [hospital, setHospital] = useState('');
 
   const user = useSelector(getUser);
-  
+
   useEffect(() => {
     if (!user) navigate('/auth');
   }, [user]);
@@ -48,8 +48,8 @@ const AddDoctor = () => {
         setSpecialization('');
         setBio('');
         setRate('');
-        setHospital('');    
-        
+        setHospital('');
+
         if (fileInputRef.current) {
           fileInputRef.current.value = '';
         }
