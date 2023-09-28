@@ -1,14 +1,5 @@
-import React from 'react';
-import DeleteDoctor from '../components/DeleteDoctor';
-
-const doctors = [
-  { id: 1, name: 'tom', image: '/doctor2.jpg' },
-  { id: 2, name: 'tom', image: '/doctor2.jpg' },
-  { id: 3, name: 'tom', image: '/doctor2.jpg' },
-  { id: 4, name: 'tom', image: '/doctor2.jpg' },
-  { id: 5, name: 'tom', image: '/doctor2.jpg' },
-  { id: 6, name: 'tom', image: '/doctor2.jpg' },
-];
+import React from "react";
+import DeleteDoctor from "../components/DeleteDoctor";
 
 function DeleteDoctorList() {
   return (
