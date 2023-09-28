@@ -17,6 +17,10 @@ const AddDoctor = () => {
 
   const user = useSelector(getUser);
   
+  useEffect(() => {
+    if (!user) navigate('/auth');
+  }, [user]);
+
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
     setImage(selectedFile);
