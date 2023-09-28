@@ -16,8 +16,8 @@ const persistConfig = {
 const mainPagePersistConfig = {
   key: 'mainPage',
   storage,
-  whitelist: ['clickedDoctor']
-}
+  whitelist: ['clickedDoctor'],
+};
 
 const rootReducer = combineReducers({
   auth: authReducer,

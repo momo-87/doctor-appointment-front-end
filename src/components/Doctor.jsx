@@ -1,15 +1,15 @@
-import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
-import { setClickedDoctor } from "../redux/doctor/doctorSlice";
+import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import { setClickedDoctor } from '../redux/doctor/doctorSlice';
 
 const Doctor = ({ doctor }) => {
   const dispatch = useDispatch();
 
   const setDoctor = () => {
-    dispatch(setClickedDoctor(doctor.id))
+    dispatch(setClickedDoctor(doctor.id));
   };
-  
+
   return (
     <div className="md:flex md:justify-between md:pr-5 md:ml-5">
       <>
@@ -33,7 +33,10 @@ const Doctor = ({ doctor }) => {
             </p>
             <p className="w-full flex justify-between">
               Rate:
-              <span className="font-bold">${doctor.rate}</span>
+              <span className="font-bold">
+                $
+                {doctor.rate}
+              </span>
             </p>
           </div>
 
@@ -58,6 +61,7 @@ export default Doctor;
 
 Doctor.propTypes = {
   doctor: PropTypes.shape({
+    id: PropTypes.number,
     name: PropTypes.string,
     specialization: PropTypes.string,
     hospital: PropTypes.string,

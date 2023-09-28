@@ -1,12 +1,13 @@
-import { Outlet, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import MobileMenu from "./MobileMenu";
-import NavigationPanel from "./NavigationPanel";
-import { getUser } from "../redux/auth/authSlice";
-import { fetchAllDoctors, getDoctors } from "../redux/doctor/doctorSlice";
+import { Outlet, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
+import MobileMenu from './MobileMenu';
+import NavigationPanel from './NavigationPanel';
+import { getUser } from '../redux/auth/authSlice';
+import { fetchAllDoctors, getDoctors } from '../redux/doctor/doctorSlice';
 import 'react-toastify/dist/ReactToastify.css';
+import { resetAppointments } from '../redux/appointment/appointmentSlice';
 
 const Layout = () => {
   const navigate = useNavigate();
@@ -14,17 +15,18 @@ const Layout = () => {
 
   const existingUser = useSelector(getUser);
   const doctors = useSelector(getDoctors);
-    
+
   useEffect(() => {
     if (!existingUser) {
-      return navigate("/auth");
-    } else {
-      if (doctors === null) {
-        dispatch(fetchAllDoctors());
-      }
+      dispatch(resetAppointments());
+      return navigate('/auth');
     }
+    if (doctors === null) {
+      dispatch(fetchAllDoctors());
+    }
+
     return () => {};
-  }, [existingUser]);
+  }, [existingUser, dispatch]);
 
   return (
     <>
@@ -32,7 +34,7 @@ const Layout = () => {
         <MobileMenu />
         <NavigationPanel />
         <Outlet />
-        <ToastContainer />
+        <ToastContainer limit={1} />
       </div>
     </>
   );

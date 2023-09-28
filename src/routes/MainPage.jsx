@@ -8,13 +8,15 @@ import DoctorCard from '../components/DoctorCard';
 
 const MainPage = () => {
   const dispatch = useDispatch();
-  const { doctors, isLoading, error, status } = useSelector(mainPageDoctors);
+  const {
+    doctors, isLoading, error, status,
+  } = useSelector(mainPageDoctors);
 
   useEffect(() => {
     if (status === 'not started') {
       dispatch(getMainPageDoctors());
-    } 
-
+    }
+    return () => {};
   }, [dispatch, status]);
 
   return (

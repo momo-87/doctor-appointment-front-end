@@ -46,12 +46,12 @@ export const doctorSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(fetchAllDoctors.fulfilled, (state, action) => {
-        state.status = 'succeeded';
         state.doctors = action.payload;
+        state.status = 'succeeded';
       })
       .addCase(fetchAllDoctors.rejected, (state, action) => {
-        state.status = 'failed';
         state.error = action.payload;
+        state.status = 'failed';
       });
   },
 });

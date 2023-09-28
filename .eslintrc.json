@@ -21,7 +21,8 @@
     "no-param-reassign": "off",
     "no-return-assign": "off",
     "no-shadow": "off",
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "no-nested-ternary": "off"
   },
 
   "ignorePatterns": ["dist/", "build/"]

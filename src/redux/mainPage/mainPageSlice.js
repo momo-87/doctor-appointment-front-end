@@ -7,7 +7,7 @@ const initialState = {
   isLoading: true,
   error: undefined,
   clickedDoctor: null,
-  status: 'not started'
+  status: 'not started',
 };
 
 export const getMainPageDoctors = createAsyncThunk('mainPage/getMainPageDoctors', async (_, { rejectWithValue }) => {
@@ -25,24 +25,23 @@ export const mainPageSlice = createSlice({
   reducers: {
     addClickedDoctor: (state, action) => {
       state.clickedDoctor = action.payload;
-    }
+    },
   },
   extraReducers(builder) {
     builder
       .addCase(getMainPageDoctors.pending, (state) => {
         state.isLoading = true;
-        
       })
       .addCase(getMainPageDoctors.fulfilled, (state, action) => {
         state.isLoading = false;
         state.doctors = action.payload.data;
         state.error = undefined;
-        state.status = "succeeded";
+        state.status = 'succeeded';
       })
       .addCase(getMainPageDoctors.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
-        state.status = "failed";
+        state.status = 'failed';
       });
   },
 });
