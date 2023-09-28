@@ -29,6 +29,22 @@ export const removeDoctor = createAsyncThunk(
 
 export const addNewDoctor = createAction('doctors/addNewDoctor');
 
+export const doctorsCreateThunk = createAsyncThunk(
+  'doctors/create',
+  async (doctor, { rejectWithValue, dispatch }) => { 
+    const headers = {
+      'Content-Type': 'multipart/form-data',
+    };
+    const URL = `${BASE_URL}/doctors/`;
+    try {
+      const response = await axios.post(URL, doctor, { headers });
+      return response;
+    } catch (error) {
+      return rejectWithValue('Cannot create doctor');
+    }
+  },
+);
+
 export const doctorSlice = createSlice({
   name: 'doctor',
   initialState,
