@@ -38,6 +38,7 @@ export const doctorsCreateThunk = createAsyncThunk(
     const URL = `${BASE_URL}/doctors/`;
     try {
       const response = await axios.post(URL, doctor, { headers });
+      dispatch(addNewDoctor(response.data));
       return response;
     } catch (error) {
       return rejectWithValue('Cannot create doctor');
