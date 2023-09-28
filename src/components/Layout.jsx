@@ -5,9 +5,8 @@ import MobileMenu from "./MobileMenu";
 import NavigationPanel from "./NavigationPanel";
 import { getUser } from "../redux/auth/authSlice";
 import { fetchAllDoctors, getDoctors } from "../redux/doctor/doctorSlice";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { setToast, toastMessage } from '../redux/mainPage/mainPageSlice';
 
 const Layout = () => {
   const navigate = useNavigate();
@@ -15,9 +14,7 @@ const Layout = () => {
 
   const existingUser = useSelector(getUser);
   const doctors = useSelector(getDoctors);
-  
-  const notification = useSelector(toastMessage);
-  
+    
   useEffect(() => {
     if (!existingUser) {
       return navigate("/auth");
@@ -28,30 +25,6 @@ const Layout = () => {
     }
     return () => {};
   }, [existingUser]);
-
-
-  useEffect(() => {
-    if (notification !== null && notification !== undefined) {
-      switch (notification.type) {
-        case 'success':
-          toast.success(notification.message, {
-            position: toast.POSITION.TOP_CENTER
-          });
-          break;
-        case 'error':
-          toast.error(notification.message, {
-            position: toast.POSITION.TOP_CENTER
-          });
-          break;
-      }
-    }
-
-    setTimeout(() => {
-      setToast(null);
-      toast.dismiss();
-    }, 5000);
-
-  }, [notification])
 
   return (
     <>

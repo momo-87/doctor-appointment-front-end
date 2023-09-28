@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { fetchAllDoctors } from "../redux/doctor/doctorSlice";
-import { createAppointment } from "../redux/appointment/appointmentSlice";
+import { createAppointment, resetStatus } from "../redux/appointment/appointmentSlice";
 import { getUser } from "../redux/auth/authSlice";
-import { setToast } from "../redux/mainPage/mainPageSlice";
+import { toast } from 'react-toastify';
 
 const NewAppointmentPage = () => {
   const dispatch = useDispatch();
@@ -49,9 +49,14 @@ const NewAppointmentPage = () => {
       error !== null &&
       (createStatus === "failed" || fetchStatus === "failed")
     ) {
-      dispatch(setToast({ type: "error", message: error }));
-      
+      toast.error(error, {
+        position: toast.POSITION.TOP_CENTER
+      });
     } else if (createStatus === "succeeded") {
+      dispatch(resetStatus())
+      toast.success("Appointment successfully set", {
+        position: toast.POSITION.TOP_CENTER
+      });
       return navigate("/my-appointments");
     }
 
@@ -68,6 +73,7 @@ const NewAppointmentPage = () => {
           doctors.length > 0 &&
           selectedDoctor && (
             <div className="flex flex-col items-center justify-center mx-auto">
+
               <h1 className="text-4xl my-4">Book an appointment</h1>
               <div className="flex flex-row items-center">
                 <div className="mx-2 select-doctor">

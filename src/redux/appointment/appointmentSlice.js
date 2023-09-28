@@ -41,7 +41,10 @@ export const appointmentSlice = createSlice({
   name: 'appointment',
   initialState,
   reducers: {
-
+    resetStatus: (state) => {
+      state.createStatus = 'not started';
+      state.fetchStatus = 'not started';
+    }
   },
   extraReducers(builder) {
     builder
@@ -75,5 +78,6 @@ export const appointmentCreateStatus = (state) => state.appointment.createStatus
 export const appointmentFetchStatus = (state) => state.appointment.fetchStatus;
 export const appointmentError = (state) => state.appointment.error;
 
+export const { resetStatus } = appointmentSlice.actions;
 
 export default appointmentSlice.reducer;

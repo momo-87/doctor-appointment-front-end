@@ -7,7 +7,6 @@ const initialState = {
   isLoading: true,
   error: undefined,
   clickedDoctor: null,
-  toastMessage: null,
   status: 'not started'
 };
 
@@ -26,9 +25,6 @@ export const mainPageSlice = createSlice({
   reducers: {
     addClickedDoctor: (state, action) => {
       state.clickedDoctor = action.payload;
-    },
-    setToast: (state, action) => {
-      state.toastMessage = action.payload;
     }
   },
   extraReducers(builder) {
@@ -52,9 +48,7 @@ export const mainPageSlice = createSlice({
 });
 
 export const mainPageDoctors = (state) => state.mainPage;
-export const toastMessage = (state) => state.toastMessage;
 
 export const { addClickedDoctor } = mainPageSlice.actions;
-export const { setToast } = mainPageSlice.actions;
 
 export default mainPageSlice.reducer;
