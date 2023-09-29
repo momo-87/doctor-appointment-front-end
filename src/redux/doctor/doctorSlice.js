@@ -69,7 +69,7 @@ export const doctorSlice = createSlice({
         state.error = action.payload;
       })
       .addCase(addNewDoctor, (state, action) => {
-        state.doctors.push(action.payload);
+        state.doctors = [...state.doctors, action.payload];
       });
   },
 });

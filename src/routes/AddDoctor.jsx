@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { doctorsCreateThunk } from '../redux/doctor/doctorSlice';
@@ -17,10 +17,6 @@ const AddDoctor = () => {
   const [hospital, setHospital] = useState('');
 
   const user = useSelector(getUser);
-
-  useEffect(() => {
-    if (!user) navigate('/auth');
-  }, [user]);
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
@@ -54,6 +50,8 @@ const AddDoctor = () => {
           fileInputRef.current.value = '';
         }
       });
+
+      navigate('/');
     }
   };
 
@@ -135,7 +133,10 @@ const AddDoctor = () => {
                 className="flex text-sm rounded-lg p-2.5"
                 placeholder="Rate"
                 value={rate}
-                onChange={(e) => setRate(e.target.value)}
+                onChange={(e) => {
+                  const numericValue = e.target.value.replace(/[^0-9]/g, '');
+                  setRate(numericValue);
+                }}
                 required
               />
             </div>

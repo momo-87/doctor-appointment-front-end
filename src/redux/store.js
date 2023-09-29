@@ -10,7 +10,7 @@ import mainPageReducer from './mainPage/mainPageSlice';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['auth', 'mainPage', 'doctor'],
+  whitelist: ['auth', 'mainPage'],
 };
 
 const rootReducer = combineReducers({
