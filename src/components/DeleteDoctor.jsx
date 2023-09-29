@@ -1,15 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { removeDoctor, deleteDoctorById } from '../redux/doctor/doctorSlice';
 
 const DeleteDoctor = ({ doctor }) => {
+  const dispatch = useDispatch();
   const handleDelete = () => {
-    console.log(doctor.id);
+    dispatch(removeDoctor(doctor.id));
+    dispatch(deleteDoctorById(doctor.id));
   };
 
   return (
     <div>
-      <div className="mb-[20px]">
-        <img src={doctor.image} alt="hi" />
+      <div className="w-[70%] rounded-full mx-auto bg-color-aliceblue">
+        <img src={`data:image/png;base64,${doctor.image}`} alt="Doctor" />
       </div>
       <div className="flex justify-between items-center">
         <h1 className="text-2xl text-black text-center text-black">

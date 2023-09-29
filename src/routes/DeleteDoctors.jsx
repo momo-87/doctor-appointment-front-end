@@ -1,16 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import DeleteDoctor from '../components/DeleteDoctor';
-
-const doctors = [
-  { id: 1, name: 'tom', image: '/doctor2.jpg' },
-  { id: 2, name: 'tom', image: '/doctor2.jpg' },
-  { id: 3, name: 'tom', image: '/doctor2.jpg' },
-  { id: 4, name: 'tom', image: '/doctor2.jpg' },
-  { id: 5, name: 'tom', image: '/doctor2.jpg' },
-  { id: 6, name: 'tom', image: '/doctor2.jpg' },
-];
+import { getDoctors } from '../redux/doctor/doctorSlice';
 
 function DeleteDoctorList() {
+  const doctors = useSelector(getDoctors);
   return (
     <div className=" pt-[20px] px-[10px] md-[20px]  md:px-[20px]">
       <h1 className="text-center mb-6 text-[20px] font-bold mt-[40px]">
