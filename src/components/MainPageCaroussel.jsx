@@ -34,12 +34,12 @@ const MainPageCaroussel = ({
         ) }
       </IconButton>
     )}
-    className="overflow-hidden"
+    className="overflow-hidden flex flex-col md:flex-row"
   >
     {
       doctorsGroup.map((group) => (
         <div
-          className="md:flex-row flex flex-col md:min-w-[1400px] md:gap-[10%] gap-[75px] md:px-[70px] w-full"
+          className="md:flex-row flex flex-col md:min-w-[1400px] md:gap-[10%] gap-[50px] md:px-[70px] w-full"
           key={uuidv4()}
         >
           {!isLoading
