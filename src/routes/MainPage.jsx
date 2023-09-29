@@ -11,13 +11,14 @@ import MainPageCaroussel from '../components/MainPageCaroussel';
 const MainPage = () => {
   const dispatch = useDispatch();
   const { doctors, isLoading, error } = useSelector(mainPageDoctors);
+  let allDoctors = useSelector((state) => state.doctor.doctors);
 
   useEffect(() => {
-    dispatch(getMainPageDoctors());
-    dispatch(fetchAllDoctors());
+    if (doctors.length === 0) dispatch(getMainPageDoctors());
+    if (allDoctors.length === 0) dispatch(fetchAllDoctors());
   }, [dispatch]);
 
-  const allDoctors = useSelector((state) => state.doctor.doctors);
+  allDoctors = useSelector((state) => state.doctor.doctors);
   const doctorsGroup = groupingDoctors(doctors, allDoctors);
   doctorsGroup.unshift(doctors);
 

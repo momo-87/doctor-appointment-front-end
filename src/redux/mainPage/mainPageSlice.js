@@ -3,7 +3,7 @@ import axios from 'axios';
 import { BASE_URL } from '../constants';
 
 const initialState = {
-  doctors: null,
+  doctors: [],
   isLoading: true,
   error: undefined,
   clickedDoctor: {},
@@ -33,7 +33,7 @@ export const mainPageSlice = createSlice({
       })
       .addCase(getMainPageDoctors.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.doctors = action.payload.data;
+        state.doctors = [...action.payload.data];
         state.error = undefined;
       })
       .addCase(getMainPageDoctors.rejected, (state, action) => {

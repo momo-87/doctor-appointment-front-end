@@ -10,6 +10,7 @@ const MainPageCaroussel = ({
   doctorsGroup,
 }) => (
   <Carousel
+    transition={{ duration: 1.5 }}
     prevArrow={({ handlePrev }) => (
       <IconButton
         onClick={handlePrev}
