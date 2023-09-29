@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, createAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { BASE_URL } from '../constants';
 
@@ -27,6 +27,25 @@ export const removeDoctor = createAsyncThunk(
   },
 );
 
+export const addNewDoctor = createAction('doctor/addNewDoctor');
+
+export const doctorsCreateThunk = createAsyncThunk(
+  'doctor/create',
+  async (doctor, { rejectWithValue, dispatch }) => {
+    const headers = {
+      'Content-Type': 'multipart/form-data',
+    };
+    const URL = `${BASE_URL}/doctors/`;
+    try {
+      const response = await axios.post(URL, doctor, { headers });
+      dispatch(addNewDoctor(response.data));
+      return response;
+    } catch (error) {
+      return rejectWithValue('Cannot create doctor');
+    }
+  },
+);
+
 export const doctorSlice = createSlice({
   name: 'doctor',
   initialState,
@@ -48,6 +67,9 @@ export const doctorSlice = createSlice({
       .addCase(fetchAllDoctors.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.payload;
+      })
+      .addCase(addNewDoctor, (state, action) => {
+        state.doctors = [...state.doctors, action.payload];
       });
   },
 });
