@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import '../styles/navigation.css';
 import { useDispatch } from 'react-redux';
 import { logoutUser } from '../redux/auth/authSlice';
+import Socials from './Socials';
 
 const links = [
   { path: '/', text: 'DOCTORS' },
@@ -43,6 +44,12 @@ const NavigationPanel = () => {
             </button>
           </li>
         </ul>
+        <br />
+        {' '}
+        <hr />
+        <div className="pt-8 pl-8 w-48">
+          <Socials />
+        </div>
       </aside>
     </div>
   );
