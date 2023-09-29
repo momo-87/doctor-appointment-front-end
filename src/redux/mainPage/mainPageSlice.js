@@ -34,6 +34,7 @@ export const mainPageSlice = createSlice({
       .addCase(getMainPageDoctors.fulfilled, (state, action) => {
         state.isLoading = false;
         state.doctors = action.payload.data;
+        state.error = undefined;
       })
       .addCase(getMainPageDoctors.rejected, (state, action) => {
         state.isLoading = false;

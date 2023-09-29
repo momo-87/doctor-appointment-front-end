@@ -41,7 +41,7 @@ const Doctor = ({ doctor }) => (
           to="new-appointement"
           className="mb-5 h-[50px] bg-color-green py-2.5 text-white text-lg w-[220px] rounded-[30px] flex items-center justify-center"
         >
-          Book an appointement
+          Book an appointment
         </NavLink>
       </div>
     </>

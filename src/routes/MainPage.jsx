@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import groupingDoctors from '../logics/groupingDoctors';
 import {
   getMainPageDoctors,
   mainPageDoctors,
 } from '../redux/mainPage/mainPageSlice';
 import { fetchAllDoctors } from '../redux/doctor/doctorSlice';
-import DoctorCard from '../components/DoctorCard';
+import MainPageCaroussel from '../components/MainPageCaroussel';
 
 const MainPage = () => {
   const dispatch = useDispatch();
@@ -16,52 +17,44 @@ const MainPage = () => {
     dispatch(fetchAllDoctors());
   }, [dispatch]);
 
+  const allDoctors = useSelector((state) => state.doctor.doctors);
+  const doctorsGroup = groupingDoctors(doctors, allDoctors);
+  doctorsGroup.unshift(doctors);
+
   return (
-    <div className="pt-[100px] flex flex-col items-center w-full">
-      <div className="md:mb-[100px] mb-10">
+    <div className="pt-[100px] flex flex-col items-center w-full md:w-[calc(100%-210px)]">
+      <div className="md:mb-[80px] mb-10">
         <h1 className="text-center md:text-2xl text-xl font-extrabold">
           DOCTORS LIST
         </h1>
-        <p className="font-bold text-lg text-gray-300">
+        <p className="font-bold text-sm text-gray-300 text-center">
           Please select a doctor
         </p>
       </div>
-
-      <div className="flex">
-        {!isLoading && (
-          <div className="mt-[100px] hidden md:block">
-            left
+      {isLoading && (
+        <div className="relative flex justify-center">
+          <div className="lds-roller">
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
           </div>
-        ) }
-
-        <div className="md:grid flex flex-col md:grid-cols-[31%,31%,31%] md:grid-rows-1 md:w-[70%] mx-auto md:gap-[10%] gap-[75px]">
-          {isLoading && (
-            <>
-              <div className="lds-roller">
-                <div />
-                <div />
-                <div />
-                <div />
-                <div />
-                <div />
-                <div />
-                <div />
-              </div>
-            </>
-          )}
-          {error && <p>{error}</p>}
-          {!isLoading
-            && !error
-            && doctors.map((doctorItem) => (
-              <DoctorCard key={doctorItem.id} doctor={doctorItem} />
-            ))}
         </div>
-        {!isLoading && (
-          <div className="mt-[100px] hidden md:block">
-            right
-          </div>
-        ) }
+      )}
+      {error && <p>{error}</p>}
+
+      <div className="md:w-[calc(100%)]">
+        <MainPageCaroussel
+          isLoading={isLoading}
+          error={error}
+          doctorsGroup={doctorsGroup}
+        />
       </div>
+
     </div>
   );
 };
