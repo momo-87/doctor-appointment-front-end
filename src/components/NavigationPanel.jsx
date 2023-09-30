@@ -5,7 +5,7 @@ import { logoutUser } from '../redux/auth/authSlice';
 import Socials from './Socials';
 
 const links = [
-  { path: '/', text: 'DOCTORS' },
+  { path: '', text: 'DOCTORS' },
   { path: 'new-appointment', text: 'NEW APPOINTMENT' },
   { path: 'my-appointments', text: 'MY APPOINTMENTS' },
   { path: 'add-doctor', text: 'ADD DOCTOR' },
@@ -20,15 +20,17 @@ const NavigationPanel = () => {
   };
 
   return (
-    <div className="border-r h-screen pt-[100px]">
-      <aside className="hidden md:block">
+    <div className="border-r pt-[100px] md:fixed md:left-0">
+      <aside className="hidden md:block w-64">
         <ul className="space-y-2 font-medium items-start flex flex-col ml-3 gap-2">
           {links.map((link) => (
             <li
               key={link.text}
-              className={`transition pl-5 whitespace-nowrap active:bg-color-green active:text-white hover:bg-color-green hover:text-white h-[40px] flex items-center w-full pr-5 font-bold ${({
-                isActive,
-              }) => (isActive ? 'active' : '')}`}
+              className={`pl-5 whitespace-nowrap hover:bg-color-green hover:text-white h-[40px] flex items-center w-full pr-5 font-bold ${
+                `/${link.path}` === window.location.pathname
+                  ? 'active-link'
+                  : ''
+              }`}
             >
               <NavLink to={link.path}>{link.text}</NavLink>
             </li>

@@ -30,7 +30,7 @@ const Layout = () => {
 
   return (
     <>
-      <div className="flex">
+      <div className="flex md:ml-64 h-screen">
         <MobileMenu />
         <NavigationPanel />
         <Outlet />

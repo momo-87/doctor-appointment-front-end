@@ -8,4 +8,5 @@
   width: 100%;
   font-weight: 700;
   padding-right: 1.25rem;
+  transition: all 0.3s ease-in;
 }
