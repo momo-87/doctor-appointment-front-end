@@ -18,3 +18,19 @@ body {
   color: white;
   background-color: #97bf0f;
 }
+
+@font-face {
+  font-family: "montreal-serial-bold";
+  src:
+    url("https://candyfonts.com/wp-data/2020/07/24/104021/montreal-serial-bold.ttf") format("woff"),
+    url("https://candyfonts.com/wp-data/2020/07/24/104021/montreal-serial-bold.ttf") format("opentype"),
+    url("https://candyfonts.com/wp-data/2020/07/24/104021/montreal-serial-bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "montreal-serial-medium-regular";
+  src:
+    url("https://candyfonts.com/wp-data/2020/07/24/104016/montreal-serial-medium-regular.ttf") format("woff"),
+    url("https://candyfonts.com/wp-data/2020/07/24/104016/montreal-serial-medium-regular.ttf") format("opentype"),
+    url("https://candyfonts.com/wp-data/2020/07/24/104016/montreal-serial-medium-regular.ttf") format("truetype");
+}

@@ -89,7 +89,7 @@ const NewAppointmentPage = () => {
             <div className="flex flex-col items-center justify-center mx-auto">
               <h1 className="text-4xl my-4">Book an appointment</h1>
               <div className="flex flex-col md:flex-row items-center">
-                <div className="mx-2 w-50 border-2 border-black py-2 px-4 rounded-full my-2">
+                <div className="mx-2 w-[12.5rem] border-2 border-black py-2 px-4 rounded-full my-2">
                   <div className="text-sm text-gray-600">Doctor</div>
                   <select
                     className="p-0 m-0 active:border-none active:outline-none"
@@ -108,7 +108,7 @@ const NewAppointmentPage = () => {
                     ))}
                   </select>
                 </div>
-                <div className="mx-2 w-42 rounded-full px-4 py-2 border-2 border-black  my-2">
+                <div className="mx-2 w-[10.5rem] rounded-full px-4 py-2 border-2 border-black  my-2">
                   <div className="text-sm text-gray-600">Date</div>
                   <input
                     value={selectedDate}

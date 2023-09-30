@@ -15,11 +15,9 @@ module.exports = {
         'instagram-purple': '#C13584',
         'tiktok-black': '#000000',
       },
-      'w-42': {
-        width: '10.5rem',
-      },
-      'w-50': {
-        width: '12.5rem',
+      fontFamily: {
+        'montreal-serial': ['montreal-serial-bold', 'sans-serif'],
+        'montreal-serial-medium-regular': ['montreal-serial-medium-regular', 'sans-serif'],
       },
     },
 

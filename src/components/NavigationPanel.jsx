@@ -20,36 +20,36 @@ const NavigationPanel = () => {
   };
 
   return (
-    <div className="border-r pt-[100px] md:fixed md:left-0">
-      <aside className="hidden md:block w-64">
-        <ul className="space-y-2 font-medium items-start flex flex-col ml-3 gap-2">
+    <div className="pt-[100px] hidden md:block h-screen md:fixed md:left-0 border-r">
+      <aside className=" w-[12.75rem] ">
+        <ul className="font-medium items-start flex flex-col ml-3 font-montreal-serial mb-2">
           {links.map((link) => (
             <li
               key={link.text}
-              className={`pl-5 whitespace-nowrap hover:bg-color-green hover:text-white h-[40px] flex items-center w-full pr-5 font-bold ${
+              className={`px-5 whitespace-nowrap hover:bg-color-green hover:text-white h-[48px] flex items-center w-full font-bold ${
                 `/${link.path}` === window.location.pathname
-                  ? 'active-link'
+                  ? 'bg-color-green text-white'
                   : ''
               }`}
             >
               <NavLink to={link.path}>{link.text}</NavLink>
             </li>
           ))}
-          <li className="flex flex-row hover:bg-color-green hover:text-white w-full logout">
+          <li className="px-5 whitespace-nowrap hover:bg-color-green h-[48px] hover:text-white flex items-center w-full font-bold logout">
             <button
               type="button"
-              className="pl-5 whitespace-nowrap h-[40px] flex items-center pr-5 font-bold"
+              className="flex items-center"
               onClick={() => logout()}
             >
               <i className="fa-solid fa-arrow-right-from-bracket text-black mr-2 logout-ico" />
-              <p className="text-base uppercase">Logout</p>
+              <p className="text-base uppercase font-bold">Logout</p>
             </button>
           </li>
         </ul>
         <br />
         {' '}
         <hr />
-        <div className="pt-8 pl-8 w-48">
+        <div className="mt-8 ml-8 w-36">
           <Socials />
         </div>
       </aside>

@@ -20,7 +20,7 @@ const Socials = () => (
       </button>
     </div>
     <div>
-      2023 © Microverse
+      <p className="text-xs">2023 © Microverse</p>
     </div>
   </div>
 );
