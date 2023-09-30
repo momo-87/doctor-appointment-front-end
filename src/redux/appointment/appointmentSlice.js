@@ -4,40 +4,59 @@ import { BASE_URL } from '../constants';
 
 const initialState = {
   appointments: [],
-  doctors: [],
   fetchStatus: 'not started',
   createStatus: 'not started',
-  doctorFetchStatus: 'not started',
   error: null,
 };
 
-export const createAppointment = createAsyncThunk('CREATE APPOINTMENT', async (data) => {
-  const response = await axios.post(`${BASE_URL}/appointments`, JSON.stringify(data), {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-
-  return response.data;
+export const createAppointment = createAsyncThunk('CREATE APPOINTMENT', async (data, { rejectWithValue }) => {
+  try {
+    const response = await axios.post(`${BASE_URL}/appointments`, JSON.stringify(data), {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    return response.data;
+  } catch (err) {
+    if (!err.response) {
+      throw err;
+    }
+    return rejectWithValue(err.response);
+  }
 });
 
-export const fetchAllAppointments = createAsyncThunk('FETCH APPOINTMENTS', async (_, { getState }) => {
-  const response = await axios.post(`${BASE_URL}/appointments/find_all`, JSON.stringify({
-    user_id: getState().auth.user.id,
-  }), {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-
-  return response.data;
+export const fetchAllAppointments = createAsyncThunk('FETCH APPOINTMENTS', async (_, { getState, rejectWithValue }) => {
+  try {
+    const response = await axios.post(`${BASE_URL}/appointments/find_all`, JSON.stringify({
+      user_id: getState().auth.user.id,
+    }), {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    return response.data;
+  } catch (err) {
+    if (!err.response) {
+      throw err;
+    }
+    return rejectWithValue(err.response);
+  }
 });
 
 export const appointmentSlice = createSlice({
   name: 'appointment',
   initialState,
   reducers: {
-
+    resetStatus: (state) => {
+      state.createStatus = 'not started';
+      state.error = null;
+    },
+    resetAppointments: (state) => {
+      state.appointments = [];
+      state.fetchStatus = 'not started';
+      state.createStatus = 'not started';
+      state.error = null;
+    },
   },
   extraReducers(builder) {
     builder
@@ -46,11 +65,14 @@ export const appointmentSlice = createSlice({
       })
       .addCase(createAppointment.fulfilled, (state, action) => {
         state.createStatus = 'succeeded';
-        state.appointments = [...state.appointments, action.payload];
+        state.appointments = state.appointments
+          .slice()
+          .concat(action.payload)
+          .sort((a, b) => new Date(a.date) - new Date(b.date));
       })
       .addCase(createAppointment.rejected, (state, action) => {
         state.createStatus = 'failed';
-        state.error = action.error.message;
+        state.error = action.payload.data.error;
       })
       .addCase(fetchAllAppointments.pending, (state) => {
         state.fetchStatus = 'loading';
@@ -61,7 +83,7 @@ export const appointmentSlice = createSlice({
       })
       .addCase(fetchAllAppointments.rejected, (state, action) => {
         state.fetchStatus = 'failed';
-        state.error = action.error.message;
+        state.error = action.payload.statusText;
       });
   },
 });
@@ -71,7 +93,6 @@ export const appointmentCreateStatus = (state) => state.appointment.createStatus
 export const appointmentFetchStatus = (state) => state.appointment.fetchStatus;
 export const appointmentError = (state) => state.appointment.error;
 
-export const doctorFetchStatus = (state) => state.appointment.doctorFetchStatus;
-export const getDoctors = (state) => state.appointment.doctors;
+export const { resetStatus, resetAppointments } = appointmentSlice.actions;
 
 export default appointmentSlice.reducer;
