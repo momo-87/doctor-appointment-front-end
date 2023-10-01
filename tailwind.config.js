@@ -16,8 +16,9 @@ module.exports = {
         'tiktok-black': '#000000',
       },
       fontFamily: {
-        'montreal-serial': ['montreal-serial-bold', 'sans-serif'],
+        'montreal-serial-bold': ['montreal-serial-bold', 'sans-serif'],
         'montreal-serial-medium-regular': ['montreal-serial-medium-regular', 'sans-serif'],
+        'montreal-serial-light-regular': ['montreal-serial-light-regular', 'sans-serif'],
       },
     },
 

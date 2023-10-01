@@ -20,13 +20,13 @@ const NavigationPanel = () => {
   };
 
   return (
-    <div className="pt-[100px] hidden md:block h-screen md:fixed md:left-0 border-r">
+    <div className="pt-[100px] hidden md:block h-screen md:fixed md:left-0 border-r z-20 bg-white">
       <aside className=" w-[12.75rem] ">
         <ul className="font-medium items-start flex flex-col ml-3 font-montreal-serial mb-2">
           {links.map((link) => (
             <li
               key={link.text}
-              className={`px-5 whitespace-nowrap hover:bg-color-green hover:text-white h-[48px] flex items-center w-full font-bold ${
+              className={`px-5 whitespace-nowrap hover:text-color-green h-[48px] flex items-center w-full font-bold ${
                 `/${link.path}` === window.location.pathname
                   ? 'bg-color-green text-white'
                   : ''
@@ -35,7 +35,7 @@ const NavigationPanel = () => {
               <NavLink to={link.path}>{link.text}</NavLink>
             </li>
           ))}
-          <li className="px-5 whitespace-nowrap hover:bg-color-green h-[48px] hover:text-white flex items-center w-full font-bold logout">
+          <li className="px-5 whitespace-nowrap hover:text-color-green h-[48px] flex items-center w-full font-bold logout">
             <button
               type="button"
               className="flex items-center"

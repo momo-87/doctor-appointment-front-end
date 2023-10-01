@@ -5,7 +5,7 @@ import {
   authenticate,
   getUser,
   authStatus,
-  // authError,
+  authError,
 } from '../redux/auth/authSlice';
 
 const AuthPage = () => {
@@ -14,7 +14,7 @@ const AuthPage = () => {
 
   const existingUser = useSelector(getUser);
   const auth = useSelector(authStatus);
-  // const error = useSelector(authError);
+  const error = useSelector(authError);
 
   const [userName, setUserName] = useState('');
 
@@ -32,7 +32,8 @@ const AuthPage = () => {
   }, [existingUser, auth]);
 
   return (
-    <div className="flex items-center main_bg">
+    <div className="flex flex-col items-center justify-center main_bg">
+      {error && <div className="text-red-500 font-semibold">ERROR: Backend not available</div>}
       <form onSubmit={handleSubmit} className="mx-auto">
         <div className="flex flex-row bg-color-green border border-white rounded-full items-center px-2">
           <input

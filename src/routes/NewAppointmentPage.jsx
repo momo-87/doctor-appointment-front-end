@@ -26,7 +26,7 @@ const NewAppointmentPage = () => {
   const existingUser = useSelector(getUser);
 
   const handleSubmit = () => {
-    if (selectedDate !== null) {
+    if (selectedDate !== null && selectedDoctor !== null) {
       dispatch(
         createAppointment({
           user_id: existingUser.id,
@@ -34,23 +34,18 @@ const NewAppointmentPage = () => {
           appointment_date: selectedDate,
         }),
       );
-    } else {
-      toast.error('Please select a date', {
-        position: toast.POSITION.TOP_CENTER,
-        autoClose: 3000,
-      });
     }
   };
 
   useEffect(() => {
     if (fetchStatus === 'not started') {
       dispatch(fetchAllDoctors());
-    } else if (doctors !== null && doctors.length > 0) {
-      if (appointmentDoctor !== null) {
-        setSelectedDoctor(appointmentDoctor);
-      } else {
-        setSelectedDoctor(doctors[0]);
-      }
+    } else if (
+      doctors !== null
+      && doctors.length > 0
+      && appointmentDoctor !== null
+    ) {
+      setSelectedDoctor(appointmentDoctor);
     }
 
     return () => {
@@ -85,57 +80,87 @@ const NewAppointmentPage = () => {
         fetchStatus === 'loading' ? (
           <div>Loading...</div>
         ) : (
-          selectedDoctor !== null && (
-            <div className="flex flex-col items-center justify-center mx-auto">
-              <h1 className="text-4xl my-4">Book an appointment</h1>
-              <div className="flex flex-col md:flex-row items-center">
-                <div className="mx-2 w-[12.5rem] border-2 border-black py-2 px-4 rounded-full my-2">
-                  <div className="text-sm text-gray-600">Doctor</div>
-                  <select
-                    className="p-0 m-0 active:border-none active:outline-none"
-                    onChange={(e) => {
-                      const currentDoctor = doctors.find(
-                        ({ id }) => parseInt(id, 10) === parseInt(e.target.value, 10),
-                      );
-                      setSelectedDoctor(currentDoctor);
-                    }}
-                    value={selectedDoctor.id}
-                  >
-                    {doctors.map((doctor) => (
-                      <option key={doctor.id} value={doctor.id}>
-                        {doctor.name}
+          doctors !== null
+          && doctors.length > 0 && (
+            <div className="flex mx-auto book-appointment text-white">
+              <div className="flex flex-col items-center justify-center z-10">
+                <h1 className="text-2xl my-4 uppercase font-montreal-serial-bold tracking-[0.5em] text-center mx-2">
+                  Book an appointment
+                </h1>
+                <hr className="mb-6 mt-2 w-2/5" />
+                <div className="tracking-widest w-1/2 mb-6 text-center">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Libero eius quia quisquam modi sapiente minima eaque facilis
+                  hic maiores nemo magnam repudiandae adipisci consectetur sint
+                  distinctio mollitia velit, provident soluta.
+                </div>
+                <div className="flex flex-col md:flex-row items-center flex-wrap justify-center">
+                  <div className="m-2 custom-select">
+                    <select
+                      className="m-0 py-2 pl-4 pr-10 border rounded-full text-black"
+                      onChange={(e) => {
+                        const currentDoctor = doctors.find(
+                          ({ id }) => parseInt(id, 10) === parseInt(e.target.value, 10),
+                        );
+                        setSelectedDoctor(currentDoctor);
+                      }}
+                    >
+                      <option
+                        value=""
+                        disabled
+                        selected={selectedDoctor === null}
+                      >
+                        Select a doctor
                       </option>
-                    ))}
-                  </select>
-                </div>
-                <div className="mx-2 w-[10.5rem] rounded-full px-4 py-2 border-2 border-black  my-2">
-                  <div className="text-sm text-gray-600">Date</div>
-                  <input
-                    value={selectedDate}
-                    onChange={(e) => setSelectedDate(e.target.value)}
-                    type="date"
-                    className="m-0 p-0"
-                    placeholder="Date"
-                    required
-                    min={new Date().toISOString().split('T')[0]}
-                  />
-                </div>
-                <div className="mx-2 w-48 my-2">
-                  <div className="rounded-full px-4 py-2 border-2 border-black bg-gray-300">
-                    <div className="text-gray-600 text-sm">Hospital</div>
-                    <div className="text-black text-base">
-                      {selectedDoctor.hospital}
+                      {doctors.map((doctor) => (
+                        <option
+                          key={doctor.id}
+                          value={doctor.id}
+                          selected={
+                            !!(selectedDoctor !== null
+                            && selectedDoctor.id === doctor.id)
+                          }
+                        >
+                          {doctor.name}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="m-2">
+                    <input
+                      value={selectedDate}
+                      onChange={(e) => setSelectedDate(e.target.value)}
+                      type="date"
+                      className="m-0 px-4 py-2 border rounded-full  text-black"
+                      placeholder="Date"
+                      required
+                      min={new Date().toISOString().split('T')[0]}
+                    />
+                  </div>
+                  <div className="m-2">
+                    <div className="rounded-full px-4 py-2 border  flex flex-row justify-between items-center bg-white text-black">
+                      <div className="text-black text-base">
+                        {selectedDoctor !== null ? (
+                          selectedDoctor.hospital
+                        ) : (
+                          <span className="text-gray-500">Hospital</span>
+                        )}
+                      </div>
+                      <i className="fa-solid fa-location-dot pl-2" />
+                      <span />
                     </div>
                   </div>
-                </div>
-                <div className="mx-2">
-                  <button
-                    type="submit"
-                    className="rounded-full p-4 border-2 border-color-green bg-color-green text-white"
-                    onClick={() => handleSubmit()}
-                  >
-                    Book Now
-                  </button>
+                  <div className="m-2">
+                    <button
+                      type="submit"
+                      className="rounded-full px-4 py-2 border-2 border-white bg-color-green text-white
+                    focus:outline-none hover:bg-white hover:text-color-green transition duration-300 ease-in-out font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                      onClick={() => handleSubmit()}
+                      disabled={createStatus === 'loading' || selectedDoctor === null || selectedDate === null}
+                    >
+                      Book Now
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
