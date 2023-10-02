@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import groupingDoctors from '../logics/groupingDoctors';
+import removeDuplicateDoctors from '../logics/removeDuplicateDoctors';
 import {
   getMainPageDoctors,
   mainPageDoctors,
@@ -15,12 +15,12 @@ const MainPage = () => {
 
   useEffect(() => {
     if (doctors.length === 0) dispatch(getMainPageDoctors());
-    if (allDoctors.length === 0) dispatch(fetchAllDoctors());
+    dispatch(fetchAllDoctors());
   }, [dispatch]);
 
   allDoctors = useSelector((state) => state.doctor.doctors);
-  const doctorsGroup = groupingDoctors(doctors, allDoctors);
-  doctorsGroup.unshift(doctors);
+  allDoctors = removeDuplicateDoctors(doctors, allDoctors);
+  allDoctors = [...doctors, ...allDoctors];
 
   return (
     <div className="pt-[100px] flex flex-col items-center w-full md:w-[calc(100%-210px)]">
@@ -48,11 +48,11 @@ const MainPage = () => {
       )}
       {error && <p>{error}</p>}
 
-      <div className="md:w-[calc(100%)]">
+      <div className="md:w-[100%] overflow-hidden">
         <MainPageCaroussel
           isLoading={isLoading}
           error={error}
-          doctorsGroup={doctorsGroup}
+          allDoctors={allDoctors}
         />
       </div>
 
