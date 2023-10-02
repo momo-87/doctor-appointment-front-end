@@ -56,17 +56,17 @@ const AddDoctor = () => {
   };
 
   return (
-    <div className="w-screen bg-color-green">
+    <div className="w-screen">
       <div className="flex flex-col ">
-        <h3 className="flex items-center mx-auto my-10 text-white font-bold text-3xl">Add Doctor</h3>
+        <h3 className="flex items-center mx-auto pt-10 my-10 font-bold text-3xl">Add Doctor</h3>
         <form onSubmit={(e) => { handleSubmit(e); }} encType="multipart/form-data" className="mx-auto">
           <div className="flex flex-col ">
             <div className="mb-4 mx-auto">
-              <label htmlFor="name" className="flex font-semibold dark:text-white">Doctor Name</label>
+              <label htmlFor="name" className="flex font-semibold">Doctor Name</label>
               <input
                 type="text"
                 id="name"
-                className="flex text-sm rounded-lg p-2.5 input-container"
+                className="flex text-lm p-2.5 input-container border-2 rounded-lg border-gray-500"
                 placeholder="Name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -75,7 +75,7 @@ const AddDoctor = () => {
             </div>
 
             <div className="mb-4 mx-auto">
-              <label htmlFor="images" className="mb-1 flex font-semibold dark:text-white">Photo</label>
+              <label htmlFor="images" className="mb-1 flex font-semibold">Photo</label>
               <input
                 ref={fileInputRef}
                 className="relative m-0 block w-full min-w-0 flex-auto
@@ -85,7 +85,7 @@ const AddDoctor = () => {
                           file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem]
                           hover:file:bg-neutral-400 focus:border-primary focus:shadow-te-primary focus:outline-none
                           dark:border-neutral-600 dark:text-neutral-300 dark:file:bg-neutral-700 dark:file:text-neutral-100
-                          dark:focus:border-primary text-sm rounded-lg input-container"
+                          dark:focus:border-primary text-lm rounded-lg border-2 input-container border-gray-500"
                 type="file"
                 id="image"
                 style={{
@@ -100,11 +100,11 @@ const AddDoctor = () => {
             </div>
 
             <div className="mb-4 mx-auto">
-              <label htmlFor="specialization" className="flex font-semibold dark:text-white">Specialization</label>
+              <label htmlFor="specialization" className="flex font-semibold">Specialization</label>
               <input
                 type="text"
                 id="specialization"
-                className="flex text-sm rounded-lg p-2.5 input-container"
+                className="flex text-lm border-2 rounded-lg p-2.5 input-container border-gray-500"
                 placeholder="Specialization"
                 value={specialization}
                 onChange={(e) => setSpecialization(e.target.value)}
@@ -113,11 +113,11 @@ const AddDoctor = () => {
             </div>
 
             <div className="mb-4 mx-auto">
-              <label htmlFor="bio" className="flex font-semibold dark:text-white">Bio</label>
+              <label htmlFor="bio" className="flex font-semibold">Bio</label>
               <input
                 type="text"
                 id="bio"
-                className="flex text-sm rounded-lg p-2.5 input-container"
+                className="flex text-lm rounded-lg border-2 p-2.5 input-container border-gray-500"
                 placeholder="Bio"
                 value={bio}
                 onChange={(e) => setBio(e.target.value)}
@@ -126,11 +126,11 @@ const AddDoctor = () => {
             </div>
 
             <div className="mb-4 mx-auto">
-              <label htmlFor="rate" className="flex font-semibold dark:text-white">Rate</label>
+              <label htmlFor="rate" className="flex font-semibold">Rate</label>
               <input
                 type="text"
                 id="rate"
-                className="flex text-sm rounded-lg p-2.5 input-container"
+                className="flex text-lm rounded-lg border-2 p-2.5 input-container border-gray-500"
                 placeholder="Rate"
                 value={rate}
                 onChange={(e) => {
@@ -142,11 +142,11 @@ const AddDoctor = () => {
             </div>
 
             <div className="mb-4 mx-auto">
-              <label htmlFor="hospital" className="flex font-semibold dark:text-white">Hospital</label>
+              <label htmlFor="hospital" className="flex font-semibold">Hospital</label>
               <input
                 type="text"
                 id="hospital"
-                className="flex text-sm rounded-lg p-2.5 input-container"
+                className="flex text-lm rounded-lg border-2 p-2.5 input-container border-gray-500"
                 placeholder="Hospital"
                 value={hospital}
                 onChange={(e) => setHospital(e.target.value)}
@@ -154,8 +154,8 @@ const AddDoctor = () => {
               />
             </div>
           </div>
-          <div className="flex justify-center items-center">
-            <button type="submit" className="bg-white font-bold text-color-green hover:bg-color-green hover:text-white hover:border px-5 p-2 rounded-full">Submit</button>
+          <div className="flex justify-center items-center pt-3 pb-10">
+            <button type="submit" className="bg-color-green font-bold text-white hover:bg-white hover:text-color-green hover:border px-7 p-3 rounded-full border-2">Submit</button>
           </div>
         </form>
       </div>
