@@ -36,6 +36,10 @@ body {
   color: #97bf0f;
 }
 
+.input-container {
+  width: 300px;
+}
+
 .custom-select select {
   -webkit-appearance: none;
   -moz-appearance: none;
