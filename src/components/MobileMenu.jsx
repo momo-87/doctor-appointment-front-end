@@ -15,7 +15,7 @@ const links = [
 const MobileMenu = () => {
   const [toggleMobileMenu, setToggleMobileMenu] = useState({});
   return (
-    <header className="bg-color-green h-[50px] w-full md:hidden fixed top-0">
+    <header className="bg-color-green h-[50px] w-full md:hidden fixed top-0 z-20">
       <div className="flex py-3.5 ml-3">
         { toggleMobileMenu.display ? (
           <button
@@ -24,7 +24,7 @@ const MobileMenu = () => {
               setToggleMobileMenu({});
             }}
           >
-            <RxCross2 className="text-2xl z-10" />
+            <RxCross2 className="text-2xl" />
           </button>
         ) : (
           <button

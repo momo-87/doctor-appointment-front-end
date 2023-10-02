@@ -155,7 +155,12 @@ const AddDoctor = () => {
             </div>
           </div>
           <div className="flex justify-center items-center pt-3 pb-10">
-            <button type="submit" className="bg-color-green font-bold text-white hover:bg-white hover:text-color-green hover:border px-7 p-3 rounded-full border-2">Submit</button>
+            <button
+              type="submit"
+              className="bg-color-green font-bold text-white hover:bg-white hover:text-color-green px-7 p-3 rounded-full border transition duration-300 ease-in-out hover:border-color-green"
+            >
+              Submit
+            </button>
           </div>
         </form>
       </div>

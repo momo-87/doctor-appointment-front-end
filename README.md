@@ -11,7 +11,8 @@
 - [📖 About the Project](#about-project)
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
-    - [Key Features](#key-features)   
+    - [Key Features](#key-features)
+    - [🚀 Live Demo](#live-demo)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
@@ -62,6 +63,12 @@
 - **[Delete a doctor]**
 - **[Sign in using username]**
 - **[Display list of appointments]**
+
+### Live demo <a name="live-demo"></a>
+
+The live demo is hosted on Render.
+
+[Live Demo Link](https://doctor-appointment-3o4a.onrender.com)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
