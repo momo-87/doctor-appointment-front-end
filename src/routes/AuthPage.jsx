@@ -33,22 +33,28 @@ const AuthPage = () => {
 
   return (
     <div className="flex flex-col items-center justify-center main_bg">
-      {error && <div className="text-red-500 font-semibold">ERROR: Backend not available</div>}
-      <form onSubmit={handleSubmit} className="mx-auto">
-        <div className="flex flex-row bg-color-green border border-white rounded-full items-center px-2">
-          <input
-            type="text"
-            className="p-2 font-semibold rounded-full"
-            value={userName}
-            required
-            onChange={(e) => setUserName(e.target.value)}
-            placeholder="Enter username"
-          />
-          <button type="submit" className="btn btn-primary p-4">
-            <i className="fa-regular fa-circle-right fa-lg text-white" />
-          </button>
-        </div>
-      </form>
+      <div className="z-10">
+        {error && (
+          <div className="text-red-500 font-semibold">
+            ERROR: Backend not available
+          </div>
+        )}
+        <form onSubmit={handleSubmit} className="mx-auto">
+          <div className="flex flex-row bg-color-green border border-white rounded-full items-center px-2">
+            <input
+              type="text"
+              className="p-2 font-semibold rounded-full"
+              value={userName}
+              required
+              onChange={(e) => setUserName(e.target.value)}
+              placeholder="Enter username"
+            />
+            <button type="submit" className="btn btn-primary p-4">
+              <i className="fa-regular fa-circle-right fa-lg text-white" />
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
