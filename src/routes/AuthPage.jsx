@@ -21,7 +21,6 @@ const AuthPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(authenticate({ user_name: userName }));
-    return navigate('/');
   };
 
   useEffect(() => {

@@ -22,6 +22,7 @@
     "no-return-assign": "off",
     "no-shadow": "off",
     "import/prefer-default-export": "off",
+    "no-nested-ternary": "off",
     "jsx-a11y/label-has-associated-control": ["error", {
       "required": {
         "some": ["nesting", "id"]
