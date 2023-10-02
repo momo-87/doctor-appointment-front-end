@@ -17,13 +17,12 @@ const MainPage = () => {
   useEffect(() => {
     if (status === 'not started') {
       dispatch(getMainPageDoctors());
+    } else if (allDoctors !== null) {
+      allDoctors = removeDuplicateDoctors(doctors, allDoctors);
+      allDoctors = [...doctors, ...allDoctors];
     }
     return () => {};
-  }, [dispatch, status]);
-
-  allDoctors = useSelector((state) => state.doctor.doctors);
-  allDoctors = removeDuplicateDoctors(doctors, allDoctors);
-  allDoctors = [...doctors, ...allDoctors];
+  }, [dispatch, status, allDoctors]);
 
   return (
     <div className="pt-[100px] flex flex-col items-center w-full md:w-[calc(100%-210px)]">
@@ -58,7 +57,6 @@ const MainPage = () => {
           allDoctors={allDoctors}
         />
       </div>
-
     </div>
   );
 };

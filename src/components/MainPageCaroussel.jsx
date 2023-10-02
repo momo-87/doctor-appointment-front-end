@@ -39,6 +39,7 @@ const MainPageCaroussel = ({
     >
       {!isLoading
       && !error
+      && allDoctors !== null
       && allDoctors.map((doctorItem) => (
         <div
           className="md:w-[300px] w-full md:!mx-[70px]"

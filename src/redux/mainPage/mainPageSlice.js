@@ -7,6 +7,7 @@ const initialState = {
   isLoading: true,
   error: undefined,
   clickedDoctor: {},
+  status: 'not started',
 };
 
 export const getMainPageDoctors = createAsyncThunk('mainPage/getMainPageDoctors', async (_, { rejectWithValue }) => {
