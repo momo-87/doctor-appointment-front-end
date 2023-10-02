@@ -5,18 +5,21 @@ import {
   getMainPageDoctors,
   mainPageDoctors,
 } from '../redux/mainPage/mainPageSlice';
-import { fetchAllDoctors } from '../redux/doctor/doctorSlice';
 import MainPageCaroussel from '../components/MainPageCaroussel';
 
 const MainPage = () => {
   const dispatch = useDispatch();
-  const { doctors, isLoading, error } = useSelector(mainPageDoctors);
+  const {
+    doctors, isLoading, error, status,
+  } = useSelector(mainPageDoctors);
   let allDoctors = useSelector((state) => state.doctor.doctors);
 
   useEffect(() => {
-    if (doctors.length === 0) dispatch(getMainPageDoctors());
-    if (allDoctors.length === 0) dispatch(fetchAllDoctors());
-  }, [dispatch]);
+    if (status === 'not started') {
+      dispatch(getMainPageDoctors());
+    }
+    return () => {};
+  }, [dispatch, status]);
 
   allDoctors = useSelector((state) => state.doctor.doctors);
   const doctorsGroup = groupingDoctors(doctors, allDoctors);

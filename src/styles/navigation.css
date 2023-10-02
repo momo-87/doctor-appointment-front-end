@@ -1,8 +1,6 @@
 .active {
   background-color: #97bf0f;
   color: white;
-  height: 40px;
   display: flex;
   align-items: center;
-  font-weight: 700;
 }

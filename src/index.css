@@ -14,16 +14,25 @@ body {
   background-size: cover;
 }
 
-.select-doctor select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background: transparent;
-  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
-  background-repeat: no-repeat;
-  background-position-x: 90%;
-  background-position-y: 50%;
-  padding: 1rem;
-  padding-right: 3rem;
+.logout:hover .logout-ico {
+  color: white;
+  background-color: #97bf0f;
+}
+
+@font-face {
+  font-family: "montreal-serial-bold";
+  src:
+    url("https://candyfonts.com/wp-data/2020/07/24/104021/montreal-serial-bold.ttf") format("woff"),
+    url("https://candyfonts.com/wp-data/2020/07/24/104021/montreal-serial-bold.ttf") format("opentype"),
+    url("https://candyfonts.com/wp-data/2020/07/24/104021/montreal-serial-bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "montreal-serial-medium-regular";
+  src:
+    url("https://candyfonts.com/wp-data/2020/07/24/104016/montreal-serial-medium-regular.ttf") format("woff"),
+    url("https://candyfonts.com/wp-data/2020/07/24/104016/montreal-serial-medium-regular.ttf") format("opentype"),
+    url("https://candyfonts.com/wp-data/2020/07/24/104016/montreal-serial-medium-regular.ttf") format("truetype");
 }
 
 .lds-roller {
