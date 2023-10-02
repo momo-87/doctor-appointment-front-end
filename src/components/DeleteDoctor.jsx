@@ -21,7 +21,7 @@ const DeleteDoctor = ({ doctor }) => {
         </h1>
         <div className="text-center">
           <button
-            className="border-[2px] border-color-gray width-[100px] bg-color-green mt-[0px] px-[30px] py-[15x] rounded-2xl "
+            className="hover:bg-white hover:text-color-green border-[2px] border-color-gray width-[100px] bg-color-green mt-[0px] px-[30px] py-[15x] rounded-2xl "
             type="button"
             onClick={handleDelete}
           >
