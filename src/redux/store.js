@@ -2,9 +2,9 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 import thunk from 'redux-thunk';
+import doctorReducer from './doctor/doctorSlice';
 import appointmentReducer from './appointment/appointmentSlice';
 import authReducer from './auth/authSlice';
-import doctorReducer from './doctor/doctorSlice';
 import mainPageReducer from './mainPage/mainPageSlice';
 
 const persistConfig = {

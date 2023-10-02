@@ -5,15 +5,15 @@ import { addClickedDoctor } from '../redux/mainPage/mainPageSlice';
 
 const DoctorCard = ({ doctor }) => {
   const dispatch = useDispatch();
-  const handleClick = (doctor) => dispatch(addClickedDoctor(doctor));
+  const handleClick = () => dispatch(addClickedDoctor(doctor));
 
   return (
     <>
       <NavLink
         to="details"
-        onClick={() => (handleClick(doctor))}
+        onClick={() => (handleClick())}
       >
-        <div className="hover:border-4 hover:border-gray-500 px-3 md:w-full py-5 rounded-lg w-[95%] mx-auto border-4 border-white mb-4">
+        <div className="hover:border-4 hover:border-gray-500 px-3 md:w-full py-5 rounded-lg w-[95%] mx-auto border-4 border-white mb-4 h-full">
           <div className="w-[70%] rounded-full mx-auto bg-color-aliceblue">
             <img src={`data:image/png;base64,${doctor.image}`} alt="Doctor" />
           </div>
