@@ -138,4 +138,7 @@ body {
   100% {
     transform: rotate(360deg);
   }
+
+.input-container {
+  width: 300px;
 }
