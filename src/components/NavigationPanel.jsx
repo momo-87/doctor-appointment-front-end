@@ -26,7 +26,7 @@ const NavigationPanel = () => {
         <div className=" w-[150px] py-6 self-center">
           <img src={logo} alt="logo" className="w-full h-auto" />
         </div>
-        <ul className="py-14 font-medium items-start flex flex-col ml-3 font-montreal-serial mb-2">
+        <ul className="pt-14 font-medium items-start flex flex-col ml-3 font-montreal-serial mb-2">
           {links.map((link) => (
             <li
               key={link.text}

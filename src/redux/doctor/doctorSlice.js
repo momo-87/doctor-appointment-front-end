@@ -3,7 +3,7 @@ import axios from 'axios';
 import { BASE_URL } from '../constants';
 
 const initialState = {
-  doctors: null,
+  doctors: [],
   error: null,
   appointmentDoctor: null,
   status: 'not started',

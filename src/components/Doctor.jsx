@@ -47,7 +47,8 @@ const Doctor = ({ doctor }) => {
           <NavLink
             to="/new-appointment"
             onClick={() => setDoctor()}
-            className="mb-5 h-[50px] bg-color-green py-2.5 text-white text-lg w-[220px] rounded-[30px] flex items-center justify-center"
+            className="mb-5 h-[50px] bg-color-green py-2.5 text-white text-lg w-[220px] rounded-[30px] flex items-center justify-center
+            border hover:border-color-green hover:bg-white hover:text-color-green transition duration-300 ease-in-out font-medium"
           >
             Book an appointement
           </NavLink>
