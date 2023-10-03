@@ -5,7 +5,7 @@ import {
   getMainPageDoctors,
   mainPageDoctors,
 } from '../redux/mainPage/mainPageSlice';
-import MainPageCaroussel from '../components/MainPageCaroussel';
+import MainPageCarousel from '../components/MainPageCarousel';
 
 const MainPage = () => {
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ const MainPage = () => {
   }, [dispatch, status, allDoctors]);
 
   return (
-    <div className="pt-[100px] flex flex-col items-center w-full md:w-[calc(100%-210px)]">
+    <div className="pt-[100px] flex flex-col items-center w-full">
       <div className="md:mb-[80px] mb-10">
         <h1 className="text-center md:text-2xl text-xl font-extrabold">
           DOCTORS LIST
@@ -50,8 +50,8 @@ const MainPage = () => {
       )}
       {error && <p>{error}</p>}
 
-      <div className="md:w-[100%] overflow-hidden">
-        <MainPageCaroussel
+      <div className="md:w-[100%] md:overflow-hidden">
+        <MainPageCarousel
           isLoading={isLoading}
           error={error}
           allDoctors={allDoctors}

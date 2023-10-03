@@ -3,7 +3,7 @@ import { Carousel, IconButton } from '@material-tailwind/react';
 import { BiRightArrow, BiLeftArrow } from 'react-icons/bi';
 import DoctorCard from './DoctorCard';
 
-const MainPageCaroussel = ({
+const MainPageCarousel = ({
   isLoading,
   error,
   allDoctors,
@@ -52,9 +52,9 @@ const MainPageCaroussel = ({
   </div>
 );
 
-export default MainPageCaroussel;
+export default MainPageCarousel;
 
-MainPageCaroussel.propTypes = {
+MainPageCarousel.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   error: PropTypes.string.isRequired,
   allDoctors: PropTypes.arrayOf().isRequired,
