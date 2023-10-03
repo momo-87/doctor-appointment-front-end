@@ -7,6 +7,7 @@ import {
   authStatus,
   authError,
 } from '../redux/auth/authSlice';
+import logo from '../assets/images/logo.png';
 
 const AuthPage = () => {
   const dispatch = useDispatch();
@@ -34,11 +35,9 @@ const AuthPage = () => {
   return (
     <div className="flex flex-col items-center justify-center main_bg">
       <div className="z-10">
-        {error && (
-          <div className="text-red-500 font-semibold">
-            ERROR: Backend not available
-          </div>
-        )}
+        <div className=" w-48 py-4 self-center mx-auto">
+          <img src={logo} alt="logo" className="w-full h-auto" />
+        </div>
         <form onSubmit={handleSubmit} className="mx-auto">
           <div className="flex flex-row bg-color-green border border-white rounded-full items-center px-2">
             <input
@@ -54,6 +53,11 @@ const AuthPage = () => {
             </button>
           </div>
         </form>
+        {error && (
+          <div className="text-white bg-red-500 font-semibold my-2 w-fit mx-auto">
+            ERROR: Backend not available
+          </div>
+        )}
       </div>
     </div>
   );

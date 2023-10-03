@@ -7,6 +7,7 @@ import {
   appointmentError,
   appointmentFetchStatus,
 } from '../redux/appointment/appointmentSlice';
+import Loading from '../components/Loading';
 
 const MyAppointmentsPage = () => {
   const dispatch = useDispatch();
@@ -35,7 +36,9 @@ const MyAppointmentsPage = () => {
         <hr className="mb-6 mt-2 w-2/5 self-center" />
 
         {status === 'loading' ? (
-          <div>Loading...</div>
+          <div className="flex items-center justify-center w-full">
+            <Loading />
+          </div>
         ) : status === 'succeeded' && appointments.length > 0 ? (
           <div className="relative overflow-x-auto border mb-4">
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
