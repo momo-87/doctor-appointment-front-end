@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import DeleteDoctor from '../components/DeleteDoctor';
 import { getDoctors } from '../redux/doctor/doctorSlice';
 
-function DeleteDoctorList() {
+const DeleteDoctorList = () => {
   const doctors = useSelector(getDoctors);
   return (
     <div className=" py-[20px] px-[10px] md-[20px]  md:px-[40px] lg:px-[60px]">
@@ -18,6 +18,6 @@ function DeleteDoctorList() {
       </div>
     </div>
   );
-}
+};
 
 export default DeleteDoctorList;
