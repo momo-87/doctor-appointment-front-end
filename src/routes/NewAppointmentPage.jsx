@@ -8,6 +8,7 @@ import {
   resetStatus,
 } from '../redux/appointment/appointmentSlice';
 import { getUser } from '../redux/auth/authSlice';
+import Loading from '../components/Loading';
 
 const NewAppointmentPage = () => {
   const dispatch = useDispatch();
@@ -78,7 +79,9 @@ const NewAppointmentPage = () => {
     <>
       {
         fetchStatus === 'loading' ? (
-          <div>Loading...</div>
+          <div className="flex items-center justify-center w-full">
+            <Loading />
+          </div>
         ) : (
           doctors !== null
           && doctors.length > 0 && (
@@ -117,8 +120,10 @@ const NewAppointmentPage = () => {
                           key={doctor.id}
                           value={doctor.id}
                           selected={
-                            !!(selectedDoctor !== null
-                            && selectedDoctor.id === doctor.id)
+                            !!(
+                              selectedDoctor !== null
+                              && selectedDoctor.id === doctor.id
+                            )
                           }
                         >
                           {doctor.name}
@@ -156,7 +161,11 @@ const NewAppointmentPage = () => {
                       className="rounded-full px-4 py-2 border-2 border-white bg-color-green text-white
                     focus:outline-none hover:bg-white hover:text-color-green transition duration-300 ease-in-out font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                       onClick={() => handleSubmit()}
-                      disabled={createStatus === 'loading' || selectedDoctor === null || selectedDate === null}
+                      disabled={
+                        createStatus === 'loading'
+                        || selectedDoctor === null
+                        || selectedDate === null
+                      }
                     >
                       Book Now
                     </button>

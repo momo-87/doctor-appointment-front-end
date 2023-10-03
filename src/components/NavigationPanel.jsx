@@ -3,6 +3,7 @@ import '../styles/navigation.css';
 import { useDispatch } from 'react-redux';
 import { logoutUser } from '../redux/auth/authSlice';
 import Socials from './Socials';
+import logo from '../assets/images/logo.png';
 
 const links = [
   { path: '', text: 'DOCTORS' },
@@ -20,9 +21,12 @@ const NavigationPanel = () => {
   };
 
   return (
-    <div className="pt-[100px] hidden md:block h-screen md:fixed md:left-0 border-r z-20 bg-white">
-      <aside className=" w-[12.75rem] ">
-        <ul className="font-medium items-start flex flex-col ml-3 font-montreal-serial mb-2">
+    <div className="hidden md:block h-screen md:fixed md:left-0 border-r z-20 bg-white">
+      <aside className=" w-[12.75rem] flex flex-col">
+        <div className=" w-[150px] py-6 self-center">
+          <img src={logo} alt="logo" className="w-full h-auto" />
+        </div>
+        <ul className="pt-14 font-medium items-start flex flex-col ml-3 font-montreal-serial mb-2">
           {links.map((link) => (
             <li
               key={link.text}
