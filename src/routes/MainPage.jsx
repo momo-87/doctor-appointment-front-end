@@ -6,23 +6,25 @@ import {
   mainPageDoctors,
 } from '../redux/mainPage/mainPageSlice';
 import MainPageCarousel from '../components/MainPageCarousel';
+import { fetchAllDoctors, getDoctors } from '../redux/doctor/doctorSlice';
 
 const MainPage = () => {
   const dispatch = useDispatch();
   const {
     doctors, isLoading, error, status,
   } = useSelector(mainPageDoctors);
-  let allDoctors = useSelector((state) => state.doctor.doctors);
-
+  let allDoctors = useSelector(getDoctors);
   useEffect(() => {
     if (status === 'not started') {
       dispatch(getMainPageDoctors());
+      dispatch(fetchAllDoctors());
     } else if (allDoctors !== null) {
       allDoctors = removeDuplicateDoctors(doctors, allDoctors);
-      allDoctors = [...doctors, ...allDoctors];
     }
     return () => {};
   }, [dispatch, status, allDoctors]);
+
+  allDoctors = [...doctors, ...allDoctors];
 
   return (
     <div className="pt-[100px] flex flex-col items-center w-full">
@@ -50,7 +52,7 @@ const MainPage = () => {
       )}
       {error && <p>{error}</p>}
 
-      <div className="md:w-[100%] md:overflow-hidden">
+      <div className="md:w-[100%]">
         <MainPageCarousel
           isLoading={isLoading}
           error={error}

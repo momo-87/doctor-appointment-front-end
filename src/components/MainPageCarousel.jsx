@@ -8,48 +8,46 @@ const MainPageCarousel = ({
   error,
   allDoctors,
 }) => (
-  <div>
-    <Carousel
-      transition={{ duration: 1.5 }}
-      prevArrow={({ handlePrev }) => (
-        <IconButton
-          onClick={handlePrev}
-          className="!absolute mt-[150px] -translate-y-2/4 rounded-none"
-        >
-          {!isLoading && (
-            <div className="hidden md:flex pl-[30px] bg-color-gray h-[50px] items-center w-[70px] rounded-r-3xl hover:bg-color-green">
-              <BiLeftArrow className="text-2xl text-white" />
-            </div>
-          ) }
-        </IconButton>
-      )}
-      nextArrow={({ handleNext }) => (
-        <IconButton
-          onClick={handleNext}
-          className="!absolute mt-[100px] !right-0 -translate-y-2/4 rounded-none"
-        >
-          {!isLoading && (
-            <div className="mt-[100px] hidden md:flex pl-[15px] bg-color-gray h-[50px] items-center w-[70px] rounded-l-3xl hover:bg-color-green">
-              <BiRightArrow className="text-2xl text-white" />
-            </div>
-          ) }
-        </IconButton>
-      )}
-      className="flex flex-col md:grid md:grid-flow-col  md:justify-between overflow-hidden gap-[1.75%]"
-    >
-      {!isLoading
-      && !error
-      && allDoctors !== null
-      && allDoctors.map((doctorItem) => (
-        <div
-          className="md:w-[300px] w-full md:!mx-[70px]"
-          key={doctorItem.id}
-        >
-          <DoctorCard doctor={doctorItem} />
-        </div>
-      ))}
-    </Carousel>
-  </div>
+  <Carousel
+    transition={{ duration: 1.5 }}
+    prevArrow={({ handlePrev }) => (
+      <IconButton
+        onClick={handlePrev}
+        className="!absolute mt-[150px] -translate-y-2/4 rounded-none"
+      >
+        {!isLoading && (
+          <div className="hidden md:flex pl-[30px] bg-color-gray h-[50px] items-center w-[70px] rounded-r-3xl hover:bg-color-green">
+            <BiLeftArrow className="text-2xl text-white" />
+          </div>
+        ) }
+      </IconButton>
+    )}
+    nextArrow={({ handleNext }) => (
+      <IconButton
+        onClick={handleNext}
+        className="!absolute mt-[100px] !right-0 -translate-y-2/4 rounded-none"
+      >
+        {!isLoading && (
+          <div className="mt-[100px] hidden md:flex pl-[15px] bg-color-gray h-[50px] items-center w-[70px] rounded-l-3xl hover:bg-color-green">
+            <BiRightArrow className="text-2xl text-white" />
+          </div>
+        ) }
+      </IconButton>
+    )}
+    className="flex flex-col md:grid md:grid-flow-col  md:justify-between md:gap-[1.75%] md:overflow-hidden"
+  >
+    {!isLoading
+    && !error
+    && allDoctors !== null
+    && allDoctors.map((doctorItem) => (
+      <div
+        className="md:w-[300px] w-full md:!mx-[70px]"
+        key={doctorItem.id}
+      >
+        <DoctorCard doctor={doctorItem} />
+      </div>
+    ))}
+  </Carousel>
 );
 
 export default MainPageCarousel;
