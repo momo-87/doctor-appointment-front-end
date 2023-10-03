@@ -6,6 +6,7 @@ import {
   mainPageDoctors,
 } from '../redux/mainPage/mainPageSlice';
 import MainPageCaroussel from '../components/MainPageCaroussel';
+import Loading from '../components/Loading';
 
 const MainPage = () => {
   const dispatch = useDispatch();
@@ -34,20 +35,7 @@ const MainPage = () => {
           Please select a doctor
         </p>
       </div>
-      {isLoading && (
-        <div className="relative flex justify-center">
-          <div className="lds-roller">
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-          </div>
-        </div>
-      )}
+      {isLoading && <Loading />}
       {error && <p>{error}</p>}
 
       <div className="md:w-[100%] overflow-hidden">
