@@ -4,7 +4,7 @@
   <h3><b>Doctor's Appointment Front-End</b></h3>
 </div>
 <div align="center">
-  <img src="./src/assets/images/doctors.png" alt="screenshot"/>
+  <img src="./src/assets/images/@doctors.png" alt="screenshot"/>
 </div>
 
 # 📗 Table of Contents
